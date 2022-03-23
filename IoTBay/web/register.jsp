@@ -15,7 +15,7 @@
         <h1>Register</h1>
         
         <%//comment  %>
-        <!-- form for inputs -->
+        <!-- random stuff in the commnets for inputs -->
         <form action="welcome.jsp" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name"><br>
