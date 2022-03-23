@@ -14,6 +14,8 @@
     <body>
         <h1>Register</h1>
         
+        
+        //we did a form because its good!
         <form action="welcome.jsp" method="post">
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name"><br>

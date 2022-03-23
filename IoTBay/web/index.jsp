@@ -11,7 +11,13 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <div>TODO write content</div>
-        <p><a href="register.jsp">Register</a></p>
+        <h1>TODO write content</h1>
+        
+        //buttons for login
+        <a href="register.jsp"> <input type="button" value="Register"/> </a> <br>
+        <a href="login.jsp"> <input type="button" value="Login"/> </a> <br>
+        <a href="welcome.jsp"> <input type="button" value="Guest"/> </a> <br>
+
+                
     </body>
 </html>
