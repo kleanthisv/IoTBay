@@ -14,7 +14,7 @@
     <body>
         <h1>Register</h1>
         
-        <%//comment  %>
+        <%//comment testindkasdasldasdjsad  %>
         <!-- form for inputs -->
         <form action="welcome.jsp" method="post">
             <label for="name">Name:</label><br>
