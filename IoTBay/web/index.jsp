@@ -11,9 +11,9 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
     <body>
-        <h1>TODO write content</h1>
+        <h1>Welcome to IoT Bay!</h1>
         
-        //buttons for login
+        <%//buttons for login %>
         <a href="register.jsp"> <input type="button" value="Register"/> </a> <br>
         <a href="login.jsp"> <input type="button" value="Login"/> </a> <br>
         <a href="welcome.jsp"> <input type="button" value="Guest"/> </a> <br>

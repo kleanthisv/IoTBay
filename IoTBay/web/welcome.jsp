@@ -15,7 +15,7 @@
         <h1>Registration Complete!</h1>
         <p> Congrats! you made it </p>
         
-        //get parameters from register / login form and initiate into variables
+        <!-- comment -->
         <% String name = request.getParameter("name"); %>
         <% String email = request.getParameter("email"); %>
         
