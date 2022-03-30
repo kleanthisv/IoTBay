@@ -6,18 +6,18 @@ and open the template in the editor.
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>IoT Bay</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
-        <h1>Welcome to IoT Bay!</h1>
-        
-        <%//buttons for login %>
-        <a href="register.jsp"> <input type="button" value="Register"/> </a> <br>
-        <a href="login.jsp"> <input type="button" value="Login"/> </a> <br>
-        <a href="welcome.jsp"> <input type="button" value="Guest"/> </a> <br>
-
+        <div class="navBar">
+            <a class="title" style>Welcome to IoT Bay</a>
+            <a href="login.jsp"> Login </a>
+            <a href="register.jsp"> Register </a>
+            <a href="welcome.jsp"> Guest </a>         
+        </div>
                 
     </body>
 </html>
