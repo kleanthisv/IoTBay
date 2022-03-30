@@ -33,6 +33,7 @@
         <%}else{%>
         <p> Welcome Guest!</p>
         <p> If you're a returning customer please <a href="login.jsp">log in.</a></p>
+        <p> If you'd like to save your details please <a href="register.jsp">sign up.</a></p>
         <%}%>
     </body>
 </html>
