@@ -1,7 +1,7 @@
 <%-- 
     Document   : register
     Created on : 16/03/2022, 2:09:34 PM
-    Author     : klean
+    Author     : Kleanthis
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -10,6 +10,9 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
+        
+        
+        <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
         <h1>Register</h1>
