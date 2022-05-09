@@ -9,10 +9,9 @@ import java.io.Serializable;
 
 /**
  *
- * @author klean
+ * @author kleanthis
  */
 public class User implements Serializable{
-    private String name; //to be removed in later releases.
     private String FName;
     private String LName;
     private String email;
@@ -25,16 +24,19 @@ public class User implements Serializable{
     private String locality;
     private boolean isActive;
     
-    public User(){}
-
-    public void setName(String name){
-        this.name = name;
-    }
+    //to be deleted later.
+    public User(){};
     
-    public String getName(){
-        return this.name;
+    //Constructor for Users.
+    public User(String email, String fName, String lName, String DOB , String phoneNumber, String password){
+        this.email = email;
+        this.FName = fName;
+        this.LName = lName;
+        this.password = password;
+        this.DOB = DOB;
+        this.phoneNumber = phoneNumber;
     }
-    
+  
     public void setFName(String FName){
         this.FName = FName;
     }
