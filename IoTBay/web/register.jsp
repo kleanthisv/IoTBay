@@ -11,18 +11,16 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
         
-        
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
         <div class="navBar">
-            <a class="title" style>Register</a>
+            <a class="title">Register</a>
             <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Guest </a>         
         </div>
         
-        <%//comment  %>
-        <!-- random stuff in the commnets for inputs -->
+        
         <form action="RegisterServlet" method="post">
             <label for="firstName">First Name:</label><br>
             <input type="text" id="firstName" name="firstName"><br>
@@ -35,12 +33,6 @@
             
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password"><br>
-            
-            </select><br>
-            
-            <label for="tos">Read and Agree to the TOS?</label><br>
-            <input type="checkbox" id="tos" name="tos"><br>
-            
             <br>
             <input type="submit" value="Register">
             

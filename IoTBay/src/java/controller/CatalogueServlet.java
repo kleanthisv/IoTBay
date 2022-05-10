@@ -17,7 +17,7 @@ import model.dao.*;
 public class CatalogueServlet extends HttpServlet {
     
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if(session != null) System.out.println("manager loaded");
         else{ System.out.println("problem with manager loading");}
