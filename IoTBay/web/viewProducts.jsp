@@ -6,6 +6,7 @@
 
 <%@page import="model.Product"%>
 <%@page import="java.util.ArrayList"%>
+<%@page import="controller.CatalogueServlet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -42,9 +43,8 @@
                 <td><%=p.getName()%></td>
                 <td><%=p.getCategory()%></td>
                 <td><%=p.getPrice()%></td>
-                <td><button class="actionBtn" onclick="location.href = 'editProduct.jsp?prodId=<%= p.getSKU()%>';">Edit</button></td>
-                <td><button class="actionBtn" onclick="location.href = 'processDeleteProduct.jsp?prodId=<%= p.getSKU()%>';">Delete</button></td>
-
+                <td><a href="EditProductServlet" ><button action="<% session.setAttribute("productSelected", p);  %>" class="actionBtn">Edit</button></a></td>
+                <td><a href="deleteProductServlet" ><button class="actionBtn">Delete</button></a></td>
 
             </tr>
 

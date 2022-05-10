@@ -47,7 +47,7 @@ public class UpdateProductServlet extends HttpServlet {
        Boolean exists = manager.checkItem(previouspname);
     
     if(exists) {
-    manager.updateItem(manager.fetchProductid(previouspname), productname, price);
+    //manager.updateProduct(manager.fetchProductid(previouspname), productname, price); FOR U TO FIX :) refer to DBManager for params n what not
     session.setAttribute("updated", "Product has been updated");
     
     request.getRequestDispatcher("editProduct.jsp").include(request, response);

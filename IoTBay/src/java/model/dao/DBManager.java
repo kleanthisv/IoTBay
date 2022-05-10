@@ -57,6 +57,7 @@ public class DBManager {
         st.executeUpdate("DELETE FROM ISD.USERS WHERE USEREMAIL ='" + email + "'");
     }
     
+    //returns arraylist<user> filled with every user thats present in the DB
     public ArrayList<User> getAllUsers() throws SQLException {
         String fetch = "SELECT * FROM ISD.USERS";
         ResultSet rs = st.executeQuery(fetch);
@@ -137,20 +138,10 @@ public class DBManager {
     return false;
     }
     
-    public int fetchProductid(String productname) throws SQLException {
-        String query = "SELECT PRODUCTID FROM IotBay.Product WHERE PRODUCTNAME = '"+productname+"'";
-        ResultSet rs = st.executeQuery(query);
-        int productid = 0;
-        
-        while (rs.next()) {
-            productid = rs.getInt(1);
-        }
-        //return null;
-        return productid;
-    }
-
-    public void updateItem(int fetchProductid, String productname, Double price) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    //look up product by SKU and update attributes.
+    public void updateProduct(String SKU, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
+        st.executeUpdate("UPDATE ISD.PRODUCTS" + " SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE ='" + productPrice + "', PRODUCTSTOCK='" + 
+                        productStock + "', PRODUCTSTATUS='" + productStatus  + "', PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTSKU ='" + SKU + "'");
     }
   
     

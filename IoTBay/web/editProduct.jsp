@@ -14,15 +14,11 @@
         <title>Edit Product</title>
     </head>
     <body>
-        <h1>Edit Product</h1>
+        <%
+            Product p = (Product) session.getAttribute("productSelected");
+        %>
+
+        <h1>Edit Product <%= p.getName() %></h1>
     </body>
-    
-    <%
-        Product product = (Product) session.getAttribute("product");
-   
-    %>
-    
-    
-    
-    
+
 </html>
