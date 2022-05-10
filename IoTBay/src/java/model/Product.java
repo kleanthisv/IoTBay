@@ -28,6 +28,8 @@ public class Product {
         this.category = category;            
     }
     
+    public Product(){}
+    
     //GETTERS
     public String getSKU(){
         return this.SKU;
@@ -39,6 +41,10 @@ public class Product {
     
     public double getPrice(){
         return this.price;
+    }
+    
+    public String getCategory(){
+        return this.category;
     }
     
     public int getStock(){

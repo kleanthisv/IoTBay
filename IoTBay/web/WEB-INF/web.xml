@@ -20,6 +20,10 @@
         <servlet-name>CatalogueServlet</servlet-name>
         <servlet-class>controller.CatalogueServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>ViewCatalogueServlet</servlet-name>
+        <servlet-class>controller.ViewCatalogueServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -39,6 +43,10 @@
     <servlet-mapping>
         <servlet-name>CatalogueServlet</servlet-name>
         <url-pattern>/CatalogueServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewCatalogueServlet</servlet-name>
+        <url-pattern>/ViewCatalogueServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

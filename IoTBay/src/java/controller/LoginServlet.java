@@ -18,7 +18,6 @@ public class LoginServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         DBManager manager = (DBManager) session.getAttribute("manager");
@@ -47,6 +46,7 @@ public class LoginServlet extends HttpServlet {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
             
+            //if login is successful
             if(user != null){
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("welcome.jsp").include(request, response);
@@ -57,9 +57,5 @@ public class LoginServlet extends HttpServlet {
             }
         }
     }
-    
-    public boolean isAdmin(User user){
-        if (user.getType() == "ADMIN") return true;
-        else return false;
-    }
+
 }

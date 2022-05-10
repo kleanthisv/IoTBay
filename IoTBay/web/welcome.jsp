@@ -8,8 +8,10 @@
 <!DOCTYPE html>
 <html>
     <%@ page import="model.*"%>
-        <% User user = new User();%>
-        <% boolean isGuest = true;%>
+        <% User user = new User();
+        boolean isGuest = true;
+        HttpSession mysession = request.getSession();
+        %>
         <!-- put incoming details from POST into user object  -->
         <% user.setFName(request.getParameter("firstName")); %>
         <% user.setLName(request.getParameter("lastName")); %>
@@ -39,6 +41,9 @@
             <a class="title" style>Home Page</a>
             <a href="logout.jsp"> Log Out</a>   
             <a href="welcome.jsp"> Home </a>
+            <form action="CatalogueServlet" method="post">
+            <input type="submit" value="Catalogue">
+            </form>
         </div>
         <%}%>
 

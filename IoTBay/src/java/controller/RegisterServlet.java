@@ -17,7 +17,6 @@ import model.dao.DBManager;
 public class RegisterServlet extends HttpServlet {
 
     @Override
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();

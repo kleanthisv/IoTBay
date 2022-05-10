@@ -83,6 +83,7 @@ public class DBManager {
         st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + SKU.toUpperCase() + "', '" + productName + "', '" + productPrice + "', '" + productStock + "', " + productStatus  + ", '" + productCategory.toUpperCase() + "')");
     }
     
+    //takes param SKU of type string and returns Product which has unique SKU in DB
     public Product findProduct(String SKU) throws SQLException {
         String fetch = "SELECT * FROM ISD.PRODUCTS WHERE PRODUCTSKU = '" + SKU + "'";
         ResultSet rs = st.executeQuery(fetch);
@@ -102,7 +103,22 @@ public class DBManager {
         return null;
     }
     
+    //returns an ArrayList<Product> of all products currently stored in the DB.
     public ArrayList<Product> getAllProducts() throws SQLException{
-        return null;
+        String fetch = "SELECT * FROM ISD.PRODUCTS";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<Product> temp = new ArrayList();
+        
+        while(rs.next()){
+            String SKU = rs.getString(1);
+            String name = rs.getString(2);
+            double price = rs.getDouble(3);
+            int stock = rs.getInt(4);
+            boolean status = rs.getBoolean(5);
+            String category = rs.getString(6);
+            temp.add(new Product(SKU,name,price,stock,status,category));
+        }
+        
+        return temp;
     }
 }
