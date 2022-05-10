@@ -4,22 +4,22 @@ To change this template file, choose Tools | Templates
 and open the template in the editor.
 */
 /* 
-    Created on : 30/03/2022, 1:45:36 PM
-    Author     : Richie
+    Created on : 10/05/2022, 7:54:11 PM
+    Author     : klean
 */
-
 
 body {
     background: rgb(1,3,99);
     background: linear-gradient(90deg, rgba(1,3,99,1) 1%, rgba(8,50,115,1) 71%, rgba(0,31,162,1) 100%);
-    color: white
+    color: white;
+    font-family: 'Tauri', sans-serif;
 }
 
 .navBar {
     background-color: #333;
     width: 100%;
     overflow: hidden;
-    font: Arial;
+    
 }
 
 .navBar a {
@@ -49,44 +49,47 @@ body {
     text-decoration: none;
 }
 
-
-.productTable {
-	padding-top:25px;
-	border-spacing: 0px;
+.error{
+    color: red;
 }
 
-.productTable thead tr th{
-	padding: 15px;
-	color: white;
-	background-color: #374561;
-	font-size:15px;
-}
-
-.productTable tbody tr td {
-	padding: 13px;
-	font-size: 13px
-}
-
-.productTable tr:nth-child(even) {
-	background-color: #e4e4e4;
-}
-
-.productTable tr:nth-child(odd) {
-	background-color: white;
-}
-
-actionBtn {
-    background-color: #1c54b5;
+.container {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: 5px solid #FFFF00;
     padding: 10px;
+}
+
+/* Style inputs */
+input[type=text], select {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    font-size: 20px;
+}
+
+/* Style the submit button */
+input[type=submit] {
+    width: 100%;
+    background-color: #333333;
     color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
     border: none;
-    width: 75px;
-    border-radius: 5px;
+    border-radius: 4px;
     cursor: pointer;
 }
 
-.actionBtn:hover  {
-	 background-color: #3d74d2;
+/* Add a background color to the submit button on mouse-over */
+input[type=submit]:hover {
+    background-color: #079cb9;
 }
-
-

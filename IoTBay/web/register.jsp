@@ -10,19 +10,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Register</title>
-        
-        
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
         <div class="navBar">
-            <a class="title" style>Register</a>
+            <a class="title">Register</a>
             <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Guest </a>         
         </div>
         
-        <%//comment  %>
-        <!-- random stuff in the commnets for inputs -->
+        
         <form action="RegisterServlet" method="post">
             <label for="firstName">First Name:</label><br>
             <input type="text" id="firstName" name="firstName"><br>
@@ -35,12 +35,6 @@
             
             <label for="password">Password:</label><br>
             <input type="password" id="password" name="password"><br>
-            
-            </select><br>
-            
-            <label for="tos">Read and Agree to the TOS?</label><br>
-            <input type="checkbox" id="tos" name="tos"><br>
-            
             <br>
             <input type="submit" value="Register">
             

@@ -10,8 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Login Portal</title>
-                
-        <link rel="stylesheet" type="text/css" href="stylesheet.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
     </head>
     <body>
         <div class="navBar">
@@ -19,26 +22,29 @@
             <a href="register.jsp"> Register </a>
             <a href="welcome.jsp"> Home </a>
         </div>
+
         <%
             String existError = (String) session.getAttribute("existError");
             String emailError = (String) session.getAttribute("emailError");
             String passError = (String) session.getAttribute("passwordError");
             String inputError = (String) session.getAttribute("inputError");
         %>
-                
-        <form action="LoginServlet" method="post">
-            <label for="email">Email:</label><br>
-            <input type="text" placeholder="Enter email" id="email" name="email"><br><br>
-            
-            <label for="passowrd">Password:</label><br>
-            <input type="password" placeholder="Enter password" id="password" name="password"><br>
-            <br>
-            <input type="submit" value="login" />
-        </form>
-        
-        <p> <%= (inputError != null ? inputError : "")%></p>
-        <p> <%= (existError != null ? existError : "")%></p>
-        <p> <%= (emailError != null ? emailError : "")%></p>
-        <p> <%= (passError != null ? passError : "")%></p>
+        <div class="container">
+            <form action="LoginServlet" method="post">
+                <label for="email">Email:</label>
+                <input type="text" id="email" name="email" placeholder="Your email..">
+
+                <label for="password">Password:</label>
+                <input type="text" id="password" name="password" placeholder="Your password..">
+
+                <input type="submit" value="Login">
+            </form>
+            <p class="error"> <%= (inputError != null ? inputError : "")%></p>
+            <p class="error"> <%= (existError != null ? existError : "")%></p>
+            <p class="error"> <%= (emailError != null ? emailError : "")%></p>
+            <p class="error"> <%= (passError != null ? passError : "")%></p>
+        </div>
+
+
     </body>
 </html>
