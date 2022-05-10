@@ -17,7 +17,6 @@ import model.dao.DBManager;
 public class LoginServlet extends HttpServlet {
 
     @Override
-
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
@@ -57,5 +56,10 @@ public class LoginServlet extends HttpServlet {
                 request.getRequestDispatcher("login.jsp").include(request, response);
             }
         }
+    }
+    
+    public boolean isAdmin(User user){
+        if (user.getType() == "ADMIN") return true;
+        else return false;
     }
 }

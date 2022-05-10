@@ -15,7 +15,11 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
-        <h1>Register</h1>
+        <div class="navBar">
+            <a class="title" style>Register</a>
+            <a href="login.jsp"> Login </a>
+            <a href="welcome.jsp"> Guest </a>         
+        </div>
         
         <%//comment  %>
         <!-- random stuff in the commnets for inputs -->

@@ -22,7 +22,7 @@ public class TestDB {
         
         //testFind();       
 
-        testDelete();
+        //testDelete();
     }
     
     

@@ -14,16 +14,18 @@
         <link rel="stylesheet" type="text/css" href="stylesheet.css">
     </head>
     <body>
+        <div class="navBar">
+            <a class="title" style>Login</a>
+            <a href="register.jsp"> Register </a>
+            <a href="welcome.jsp"> Home </a>
+        </div>
         <%
             String existError = (String) session.getAttribute("existError");
             String emailError = (String) session.getAttribute("emailError");
             String passError = (String) session.getAttribute("passwordError");
             String inputError = (String) session.getAttribute("inputError");
         %>
-        
-        
-        <h2>Enter your Login details below: </h2>
-        
+                
         <form action="LoginServlet" method="post">
             <label for="email">Email:</label><br>
             <input type="text" placeholder="Enter email" id="email" name="email"><br><br>
