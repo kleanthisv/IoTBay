@@ -18,6 +18,7 @@ public class User implements Serializable{
     private String DOB;
     private String phoneNumber;
     private String password;
+    private String userType;
     private String streetAddress;
     private String country;
     private String postcode;
@@ -25,7 +26,9 @@ public class User implements Serializable{
     private boolean isActive;
     
     //to be deleted later.
-    public User(){};
+    public User(){
+        this.userType = "Guest";
+    }
     
     //Constructor for Users.
     public User(String email, String fName, String lName, String DOB , String phoneNumber, String password){
@@ -35,6 +38,7 @@ public class User implements Serializable{
         this.password = password;
         this.DOB = DOB;
         this.phoneNumber = phoneNumber;
+        this.userType = "Customer";
     }
   
     public void setFName(String FName){

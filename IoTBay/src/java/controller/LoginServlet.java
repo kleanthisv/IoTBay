@@ -27,17 +27,18 @@ public class LoginServlet extends HttpServlet {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         User user = null;
+        validator.clear(session);
         
-        if(!validator.validateEmail(email)){
+        if(validator.checkEmpty(email,password)){
+            session.setAttribute("inputError", "Error: Email or password is empty.");
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+        else if(!validator.validateEmail(email)){
             session.setAttribute("emailError", "Error: Email format is incorrect.");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
-        else if(!validator.validatePassword(password)){            
+        else if(!validator.validatePassword(password)){
             session.setAttribute("passwordError", "Error: Password format is incorrect.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
-        }
-        else if(validator.checkEmpty(email,password)){
-            session.setAttribute("inputError", "Error: Email or password is empty.");
             request.getRequestDispatcher("login.jsp").include(request, response);
         }
         else {
@@ -45,12 +46,15 @@ public class LoginServlet extends HttpServlet {
                 user = manager.findUser(email, password);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
-                session.setAttribute("loginError", "Error: User not found or password was incorrect.");
-                request.getRequestDispatcher("login.jsp").include(request, response);
             }
             
             if(user != null){
                 session.setAttribute("user", user);
+                request.getRequestDispatcher("welcome.jsp").include(request, response);
+            }
+            else{
+                session.setAttribute("existError", "Error: User not found or password was incorrect.");
+                request.getRequestDispatcher("login.jsp").include(request, response);
             }
         }
     }

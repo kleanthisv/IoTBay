@@ -23,7 +23,7 @@
        @Override //Create and instance of DBConnector for the deployment session
 
        public void init() {
-
+           System.out.println("Connservlet setup starting.");
            try {
                db = new DBConnector();
 
@@ -46,7 +46,7 @@
            HttpSession session = request.getSession();
 
            conn = db.openConnection();       
-
+           System.out.println("DB connection setup.");
            try {
                manager = new DBManager(conn);
 
@@ -57,6 +57,7 @@
            //export the DB manager to the view-session (JSPs)
 
            session.setAttribute("manager", manager);
+           System.out.println("DBManager set up.");
        }   
 
         
@@ -66,7 +67,7 @@
 
            try {
                db.closeConnection();
-
+               System.out.println("DB Connection closed.");
            } catch (SQLException ex) {
 
                Logger.getLogger(ConnServlet.class.getName()).log(Level.SEVERE, null, ex);

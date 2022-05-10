@@ -20,5 +20,6 @@ and open the template in the editor.
             <a href="welcome.jsp"> Guest </a>         
         </div>
     
+        <jsp:include page="/ConnServlet" flush="true"/>
     </body>
 </html>

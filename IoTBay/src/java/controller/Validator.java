@@ -3,6 +3,7 @@ package controller;
 import java.io.Serializable;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import javax.servlet.http.HttpSession;
 
 public class Validator implements Serializable {
 
@@ -34,5 +35,12 @@ public class Validator implements Serializable {
 
     public boolean validatePassword(String password) {
         return validate(passwordPattern, password);
+    }
+    
+    public void clear(HttpSession session){
+        session.setAttribute("emailError", "");
+        session.setAttribute("passwordError", "");
+        session.setAttribute("inputError", "");
+        session.setAttribute("existError", "");
     }
 }
