@@ -24,6 +24,10 @@
         <servlet-name>ViewCatalogueServlet</servlet-name>
         <servlet-class>controller.ViewCatalogueServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <servlet-class>controller.UpdateProductServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -47,6 +51,10 @@
     <servlet-mapping>
         <servlet-name>ViewCatalogueServlet</servlet-name>
         <url-pattern>/ViewCatalogueServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>UpdateProductServlet</servlet-name>
+        <url-pattern>/UpdateProductServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

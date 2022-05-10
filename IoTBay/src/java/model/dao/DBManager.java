@@ -121,4 +121,42 @@ public class DBManager {
         
         return temp;
     }
+    
+    // Checks whether item is in the products
+    public boolean checkItem(String productname) throws SQLException {
+    String query = "SELECT * FROM IoTBay.Product WHERE (PRODUCTNAME) = '"+productname+"'";
+    ResultSet rs = st.executeQuery(query);
+
+    while (rs.next()) {
+        String item_productname = rs.getString(2);
+
+        if (item_productname.equals(productname)) {
+            return true;
+        }
+    }
+    return false;
+    }
+    
+    public int fetchProductid(String productname) throws SQLException {
+        String query = "SELECT PRODUCTID FROM IotBay.Product WHERE PRODUCTNAME = '"+productname+"'";
+        ResultSet rs = st.executeQuery(query);
+        int productid = 0;
+        
+        while (rs.next()) {
+            productid = rs.getInt(1);
+        }
+        //return null;
+        return productid;
+    }
+
+    public void updateItem(int fetchProductid, String productname, Double price) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+  
+    
+    
+    
 }
+
+
+
