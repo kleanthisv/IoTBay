@@ -28,7 +28,6 @@
         
     </head>
     <body>
-        
         <%if(isGuest){%>
         <div class="navBar">
             <a class="title" style>Home Page</a>

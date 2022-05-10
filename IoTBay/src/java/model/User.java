@@ -18,7 +18,7 @@ public class User implements Serializable{
     private String DOB;
     private String phoneNumber;
     private String password;
-    private String userType;
+    private String userType; //type can be "GUEST" "CUSTOMER" "STAFF"
     private String streetAddress;
     private String country;
     private String postcode;
@@ -53,6 +53,10 @@ public class User implements Serializable{
         this.email = email;
     }
     
+    public void setType(String type){
+        this.userType = type;
+    }
+    
     public void setPhoneNumber(String phoneNum){
         this.phoneNumber = phoneNum;
     }
@@ -67,6 +71,10 @@ public class User implements Serializable{
     
     public String getLName(){
         return this.LName;
+    }
+    
+    public String getType(){
+        return this.userType;
     }
     
     public String getEmail(){
