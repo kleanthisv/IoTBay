@@ -50,3 +50,44 @@ body {
 }
 
 
+// change colour
+.productTable {
+	padding-top:25px;
+	border-spacing: 0px;
+}
+
+.productTable thead tr th{
+	padding: 15px;
+	color: white;
+	background-color: #374561;
+	font-size:15px;
+}
+
+.productTable tbody tr td {
+	padding: 13px;
+	font-size: 13px
+}
+
+.productTable tr:nth-child(even) {
+	background-color: #e4e4e4;
+}
+
+.productTable tr:nth-child(odd) {
+	background-color: white;
+}
+
+actionBtn {
+    background-color: #1c54b5;
+    padding: 10px;
+    color: white;
+    border: none;
+    width: 75px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actionBtn:hover  {
+	 background-color: #3d74d2;
+}
+
+

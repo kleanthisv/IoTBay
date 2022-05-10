@@ -11,7 +11,7 @@
 
 <html>
     <head>
-                <title>IoT Device Catalogue Management </title>
+                <title>Catalogue Management</title>
 
         
         <style>
