@@ -19,7 +19,7 @@
         
         <%//comment  %>
         <!-- random stuff in the commnets for inputs -->
-        <form action="welcome.jsp" method="post">
+        <form action="RegisterServlet" method="post">
             <label for="firstName">First Name:</label><br>
             <input type="text" id="firstName" name="firstName"><br>
             

@@ -25,7 +25,7 @@ public class User implements Serializable{
     private String locality;
     private boolean isActive;
     
-    //to be deleted later.
+    //Default constructor used to create guests.
     public User(){
         this.userType = "Guest";
     }
