@@ -28,17 +28,25 @@
         
     </head>
     <body>
-        <h1>Welcome!</h1>
-        <p> Welcome to IoT Bay</p>
         
+        <%if(isGuest){%>
+        <div class="navBar">
+            <a class="title" style>Home Page</a>
+            <a href="login.jsp"> Login </a>
+            <a href="register.jsp"> Register </a>       
+        </div>
+        <%}else{%>
+        <div class="navBar">
+            <a class="title" style>Home Page</a>
+            <a href="logout.jsp"> Log Out</a>   
+            <a href="welcome.jsp"> Home </a>
+        </div>
+        <%}%>
 
         <%if(!isGuest){%>
         <p> Welcome <%= user.getFName()%> <%= user.getLName()%> </p>
         <p> Your email is: <%= user.getEmail() %> </p>
         <br>
-        <form action="logout.jsp" method="post">
-        <input TYPE="submit" VALUE="Logout">
-        </form>
 
         <%}else{%>
         <p> Welcome Guest!</p>
