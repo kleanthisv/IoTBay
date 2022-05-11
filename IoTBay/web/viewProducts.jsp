@@ -25,7 +25,35 @@
         <%
             ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("products");
             User user = (User) session.getAttribute("user");
+            String searchError = (String) session.getAttribute("searchError");
+            System.out.println(searchError);
         %>
+        
+        <div class="navBar">
+            <a class="title">Home Page</a>
+            <%if(user.isGuest()){%>
+                <a href="login.jsp"> Login </a>
+            <%}else{%>
+                <a href="logout.jsp"> Log Out</a>
+            <%}%>
+            <a href="welcome.jsp"> Home </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+        </div>
+        
+        <br>
+        
+        <form align='center' class='searchForm' action='CatalogueServlet' method='post'>
+            <label for="productSearch">Search:</label>
+            <input type="text" id="productSearch" name="productSearch" placeholder="Search Products by name"><br>
+            <input type="submit" value="Search">
+        </form>
+        
+        <br>
+        
+        <p class="error" align="center"> <%= (searchError != null ? searchError : "")%></p>
+        
+        <br>
+        
         <table align="center" class="productTable">
             <thead>
                 <tr>
@@ -38,6 +66,7 @@
                 </tr>
             </thead>
             <%
+                
                 for (Product p : productList) {
             %>
 

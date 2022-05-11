@@ -20,7 +20,6 @@ public class CatalogueServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         if(session != null) System.out.println("manager loaded");
-        else{ System.out.println("problem with manager loading");}
         DBManager manager = (DBManager) session.getAttribute("manager");
         try {
             ArrayList<Product> products = manager.getAllProducts();
@@ -36,12 +35,37 @@ public class CatalogueServlet extends HttpServlet {
         HttpSession session = request.getSession();
         System.out.println("POST METHOD POST METHOD");
         DBManager manager = (DBManager) session.getAttribute("manager");
+        Validator validator = new Validator();
+        validator.clear(session);
+        ArrayList<Product> products = null;
+        
         try {
-            ArrayList<Product> products = manager.getAllProducts();
+            products = manager.getAllProducts();
             session.setAttribute("products", products);
         } catch (SQLException ex) {
             Logger.getLogger(CatalogueServlet.class.getName()).log(Level.SEVERE, null, ex);
         }
+
+        //FILTER PRODUCT LIST BASED ON TERM
+        String filterTerm = request.getParameter("productSearch");
+        ArrayList<Product> filteredProducts = new ArrayList();
+        if (filterTerm != null) {
+            
+            for (Product p : products) {
+                if (p.getName().toLowerCase().contains(filterTerm.toLowerCase())) {
+                    filteredProducts.add(p);
+                }
+            }
+            
+            
+        }
+        if(filteredProducts.size() == 0 && filterTerm != null){
+                session.setAttribute("searchError", "No products found when searching for: " + filterTerm);
+        }
+        else if(filteredProducts.size() > 0){
+                session.setAttribute("products", filteredProducts);
+        }
+        
         request.getRequestDispatcher("viewProducts.jsp").include(request, response);
     }
 

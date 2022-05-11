@@ -55,7 +55,8 @@ public class Validator implements Serializable {
         session.setAttribute("nameError", "");
         session.setAttribute("emptyError", "");
         session.setAttribute("phoneError", "");
-        session.setAttribute("datePattern", "");
+        session.setAttribute("dateError", "");
+        session.setAttribute("searchError", "");
     }
 
 
