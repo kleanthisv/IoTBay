@@ -63,7 +63,7 @@ public class TestDB {
 
             String password = in.nextLine();
 
-            db.addUser(email,fName,lName,DOB,phoneNum,password);
+            db.addUser(email,fName,lName,DOB,phoneNum,password,"CUSTOMER");
 
             System.out.println("User is added to the database.");
 

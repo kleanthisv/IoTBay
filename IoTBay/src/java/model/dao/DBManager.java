@@ -42,8 +42,8 @@ public class DBManager {
     }
 
     //Add a user-data into the database   
-    public void addUser(String email, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
-        st.executeUpdate("INSERT INTO ISD.USERS" + " VALUES ('" + email + "', '" + fName + "', '" + lName + "', '" + DOB + "', '" + phoneNum  + "', '" + password + "')");
+    public void addUser(String email, String fName, String lName , String DOB, String phoneNum, String password, String type) throws SQLException {
+        st.executeUpdate("INSERT INTO ISD.USERS" + " VALUES ('" + email + "', '" + fName + "', '" + lName + "', '" + DOB + "', '" + phoneNum  + "', '" + password + "', '" + type + "')");
     }
 
     //update a user details in the database   
@@ -55,6 +55,21 @@ public class DBManager {
     //delete a user from the database   
     public void deleteUser(String email) throws SQLException {
         st.executeUpdate("DELETE FROM ISD.USERS WHERE USEREMAIL ='" + email + "'");
+    }
+    
+    //given an email, check if a user exists in the DB under that email.
+    public boolean userExists(String email) throws SQLException {
+        String fetch = "SELECT * FROM ISD.USERS WHERE USEREMAIL = '" + email + "'";
+        ResultSet rs = st.executeQuery(fetch);
+        
+        while(rs.next()) {
+            String userEmail = rs.getString(1);
+            
+            if(email.matches(userEmail)){
+                return true;
+            }
+        }
+        return false;
     }
     
     //returns arraylist<user> filled with every user thats present in the DB

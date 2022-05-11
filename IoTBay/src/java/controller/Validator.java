@@ -8,8 +8,10 @@ import javax.servlet.http.HttpSession;
 public class Validator implements Serializable {
 
     private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";
-    private String namePattern = "([A-Z][a-z]+[\\s])+[A-Z][a-z]*";
+    private String namePattern = "[A-Z][a-z]*";
     private String passwordPattern = "[a-z0-9]{4,}";
+    private String phonePattern = "[0-9]{10}";
+    private String datePattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
 
     public Validator() {
     }
@@ -36,17 +38,26 @@ public class Validator implements Serializable {
     public boolean validatePassword(String password) {
         return validate(passwordPattern, password);
     }
-    
-    
-    
-    
+
+    public boolean validatePhone(String phone){
+        return validate(phonePattern, phone);
+    }
+
+    public boolean validateDate(String date){
+        return validate(datePattern, date);
+    }
+
     public void clear(HttpSession session){
         session.setAttribute("emailError", "");
         session.setAttribute("passwordError", "");
         session.setAttribute("inputError", "");
         session.setAttribute("existError", "");
+        session.setAttribute("nameError", "");
+        session.setAttribute("emptyError", "");
+        session.setAttribute("phoneError", "");
+        session.setAttribute("datePattern", "");
     }
-    
-    
-    
+
+
+
 }
