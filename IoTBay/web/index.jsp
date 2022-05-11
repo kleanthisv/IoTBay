@@ -16,7 +16,7 @@
             <a class="title">Welcome to IoT Bay</a>
             <a href="login.jsp"> Login </a>
             <a href="register.jsp"> Register </a>
-            <a href="welcome.jsp"> Guest </a>         
+            <a href="LoginServlet?guest=true"> Guest </a>         
         </div>
 
         <jsp:include page="/ConnServlet" flush="true"/>

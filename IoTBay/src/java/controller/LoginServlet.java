@@ -57,5 +57,17 @@ public class LoginServlet extends HttpServlet {
             }
         }
     }
+    
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        
+        HttpSession session = request.getSession();
+        boolean isGuest = Boolean.parseBoolean(request.getParameter("guest"));
+        
+        if(isGuest){
+            session.setAttribute("user", new User());
+            request.getRequestDispatcher("welcome.jsp").include(request, response);
+        }
+    }
 
 }

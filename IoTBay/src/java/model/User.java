@@ -27,18 +27,18 @@ public class User implements Serializable{
     
     //Default constructor used to create guests.
     public User(){
-        this.userType = "Guest";
+        this.userType = "GUEST";
     }
     
     //Constructor for Users.
-    public User(String email, String fName, String lName, String DOB , String phoneNumber, String password){
+    public User(String email, String fName, String lName, String DOB , String phoneNumber, String password, String type){
         this.email = email;
         this.FName = fName;
         this.LName = lName;
         this.password = password;
         this.DOB = DOB;
         this.phoneNumber = phoneNumber;
-        this.userType = "Customer";
+        this.userType = type;
     }
   
     public void setFName(String FName){
@@ -89,5 +89,16 @@ public class User implements Serializable{
         return this.password;
     }
     
+    public boolean isStaff(){
+        return userType.equals("ADMIN");
+    }
+    
+    public boolean isGuest(){
+        return userType.equals("GUEST");
+    }
+    
+    public boolean isCustomer(){
+        return userType.equals("CUSTOMER");
+    }
 }
 

@@ -4,6 +4,7 @@
     Author     : Kleanthis
 --%>
 
+<%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -14,14 +15,25 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
+        
+        <%
+        User user = (User) session.getAttribute("user");
+        %>
+        
         <div class="navBar">
             <a class="title">Home Page</a>
-            <a href="logout.jsp"> Log Out</a>   
+            <%if(user.isGuest()){%>
+                <a href="login.jsp"> Login </a>
+            <%}else{%>
+                <a href="logout.jsp"> Log Out</a>
+            <%}%>
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
         </div>
 
-        <p> Welcome </p>
+        <p> Welcome <%= (user.getFName() != null ? user.getFName() : "")%> </p>
+        <p> email: <%= user.getEmail() %> </p>
+        <p> Your permissions are: <%= user.getType() %></p
         <br>
     </body>
 </html>

@@ -30,5 +30,19 @@ public class CatalogueServlet extends HttpServlet {
         }
         request.getRequestDispatcher("viewProducts.jsp").include(request, response);
     }
+    
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        System.out.println("POST METHOD POST METHOD");
+        DBManager manager = (DBManager) session.getAttribute("manager");
+        try {
+            ArrayList<Product> products = manager.getAllProducts();
+            session.setAttribute("products", products);
+        } catch (SQLException ex) {
+            Logger.getLogger(CatalogueServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        request.getRequestDispatcher("viewProducts.jsp").include(request, response);
+    }
 
 }

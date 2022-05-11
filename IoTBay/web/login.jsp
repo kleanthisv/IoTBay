@@ -35,7 +35,7 @@
                 <input type="text" id="email" name="email" placeholder="Your email..">
 
                 <label for="password">Password:</label>
-                <input type="text" id="password" name="password" placeholder="Your password..">
+                <input type="password" id="password" name="password" placeholder="Your password..">
 
                 <input type="submit" value="Login">
             </form>

@@ -35,7 +35,7 @@ public class DBManager {
             String userType = rs.getString(7);
             
             if(email.matches(userEmail) && userPassword.matches(password)){
-                return new User(userEmail, fName, lName, DOB, phoneNum, userPassword);
+                return new User(userEmail, fName, lName, DOB, phoneNum, userPassword, userType);
             }
         }
         return null;
@@ -70,7 +70,8 @@ public class DBManager {
             String DOB = rs.getString(4);
             String phoneNum = rs.getString(5);
             String password = rs.getString(6);
-            temp.add(new User(email,fName,lName,DOB,phoneNum,password));
+            String type = rs.getString(7);
+            temp.add(new User(email,fName,lName,DOB,phoneNum,password,type));
         }
         
         return temp;
@@ -140,8 +141,9 @@ public class DBManager {
     
     //look up product by SKU and update attributes.
     public void updateProduct(String SKU, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
-        st.executeUpdate("UPDATE ISD.PRODUCTS" + " SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE ='" + productPrice + "', PRODUCTSTOCK='" + 
-                        productStock + "', PRODUCTSTATUS='" + productStatus  + "', PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTSKU ='" + SKU + "'");
+        st.executeUpdate("UPDATE ISD.PRODUCTS" + " SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE =" + productPrice + ", PRODUCTSTOCK=" + 
+                        productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTSKU ='" + SKU + "'");
+        System.out.println("Updated " + productName);
     }
   
     

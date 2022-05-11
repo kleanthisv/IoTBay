@@ -13,12 +13,32 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Edit Product</title>
     </head>
-    <body>
+    <body action="EditProductServlet">
         <%
             Product p = (Product) session.getAttribute("productSelected");
-        %>
+            String isEdited = (String) session.getAttribute("isEdited");
+        %>        
+        
+        <h1>Edit Product - <%= p.getName() %></h1>
+        
+        <form action="EditProductServlet" method="post">
+            <label for="newName">Product Name:</label><br>
+            <input type="text" id="newName" name="newName" value="<%=(p.getName())%>" placeholder="Name"><br>
 
-        <h1>Edit Product <%= p.getName() %></h1>
+            <label for="newPrice">Product Price:</label><br>
+            <input type="text" id="newPrice" name="newPrice" value="<%=(p.getPrice())%>" placeholder="Price"><br>
+
+            <label for="newStock">Product Stock:</label><br>
+            <input type="text" id="newStock" name="newStock" value="<%=(p.getStock())%>" placeholder="Stock Available"><br>
+
+            <label for="newCategory">Product Category:</label><br>
+            <input type="text" id="newCategory" name="newCategory" value="<%=(p.getCategory())%>" placeholder="Category"><br>
+            <br>
+            <button type="submit" class="actionBtn">Save Changes</button>
+
+        </form>
+            
+        <p><%= (isEdited != null ? isEdited : "")%></p>
     </body>
 
 </html>
