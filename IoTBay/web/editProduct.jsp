@@ -10,10 +10,14 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+         <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
         <title>Edit Product</title>
     </head>
-    <body action="EditProductServlet">
+    <body class="editform" action="EditProductServlet">
         <%
             Product p = (Product) session.getAttribute("productSelected");
             String isEdited = (String) session.getAttribute("isEdited");
@@ -23,7 +27,7 @@
         
         
         
-        
+        <div class ="editform">
         <form action="EditProductServlet" method="post">
             <label for="newName">Product Name:</label><br>
             <input type="text" id="newName" name="newName" value="<%=(p.getName())%>" placeholder="Name"><br>
@@ -38,10 +42,12 @@
             <input type="text" id="newCategory" name="newCategory" value="<%=(p.getCategory())%>" placeholder="Category"><br>
             <br>
             <button type="submit" class="actionBtn">Save Changes</button>
-
+        
         </form>
             
         <p><%= (isEdited != null ? isEdited : "")%></p>
-    </body>
+    </div>
+
+        </body>
 
 </html>
