@@ -15,7 +15,7 @@
         <div class="navBar">
             <a class="title">Welcome to IoT Bay</a>
             <a href="login.jsp"> Login </a>
-            <a href="register.jsp"> Register </a>
+            <a href="RegisterServlet"> Register </a>
             <a href="LoginServlet?guest=true"> Guest </a>         
         </div>
 

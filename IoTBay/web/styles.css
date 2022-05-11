@@ -29,6 +29,7 @@ body {
     padding: 16px 20px;
     text-decoration: none;
     font-size: 20px;
+    border: 2px solid #ddd;
 }
 
 .navBar a:hover {
@@ -58,7 +59,7 @@ body {
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    border: 5px solid #FFFF00;
+    border: 5px solid #ddd;
     padding: 10px;
 }
 

@@ -18,6 +18,9 @@
         
         <%
         User user = (User) session.getAttribute("user");
+        if(user == null){
+            user = new User();
+        }
         %>
         
         <div class="navBar">
