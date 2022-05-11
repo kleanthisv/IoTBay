@@ -14,10 +14,17 @@ and open the template in the editor.
     </head>
     <body>
         <div class="navBar">
+            
             <a class="title" style>Catalogue</a>
             <a href=""> Logout </a>
-            <a href=""> Button 1 </a>
-            <a href=""> Button 2 </a>
+            <a href="addProduct.jsp"> Add Products</a>
+            <a href="editProduct.jsp"> Edit Products</a>
+            <a href="searchProduct.jsp"> Search Products</a>
+            <a href="viewProducts.jsp"> View Products</a>
+            <a href="deleteProduct.jsp"> Delete Products</a>
+
+
+
             <a href="welcome.jsp"> Home </a>
         </div>
 

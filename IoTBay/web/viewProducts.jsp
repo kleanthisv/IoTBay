@@ -29,12 +29,12 @@
         <table align="center" class="productTable">
             <thead>
                 <tr>
-                    <th>Product ID</th>
+                    <th>Product SKU</th>
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Price</th>
                     <th>Stock Level</th>
-                    <th colspan="2">Actions</th>
+                    <th colspan="3">Actions</th>
                 </tr>
             </thead>
             <%

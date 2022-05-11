@@ -37,10 +37,16 @@ public class Validator implements Serializable {
         return validate(passwordPattern, password);
     }
     
+    
+    
+    
     public void clear(HttpSession session){
         session.setAttribute("emailError", "");
         session.setAttribute("passwordError", "");
         session.setAttribute("inputError", "");
         session.setAttribute("existError", "");
     }
+    
+    
+    
 }

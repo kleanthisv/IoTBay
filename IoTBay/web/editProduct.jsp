@@ -21,6 +21,9 @@
         
         <h1>Edit Product - <%= p.getName() %></h1>
         
+        
+        
+        
         <form action="EditProductServlet" method="post">
             <label for="newName">Product Name:</label><br>
             <input type="text" id="newName" name="newName" value="<%=(p.getName())%>" placeholder="Name"><br>
