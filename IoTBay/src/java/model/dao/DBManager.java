@@ -47,8 +47,8 @@ public class DBManager {
     }
 
     //update a user details in the database   
-    public void updateUser(String email, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
-        st.executeUpdate("UPDATE ISD.USERS" + " SET USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
+    public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
+        st.executeUpdate("UPDATE ISD.USERS" + "SET USEREMAIL =' "+ newEmail +"', SET USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
                         DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "' WHERE USEREMAIL ='" + email + "'");
     }
 
@@ -96,25 +96,25 @@ public class DBManager {
     //PRODUCTS DATABASE MANAGEMENT
     
     //craate a new Product in the DB.
-    public void addProduct(String SKU, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
-        st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + SKU.toUpperCase() + "', '" + productName + "', '" + productPrice + "', '" + productStock + "', " + productStatus  + ", '" + productCategory.toUpperCase() + "')");
+    public void addProduct(String productID, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
+        st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + productID.toUpperCase() + "', '" + productName + "', '" + productPrice + "', '" + productStock + "', " + productStatus  + ", '" + productCategory.toUpperCase() + "')");
     }
     
-    //takes param SKU of type string and returns Product which has unique SKU in DB
-    public Product findProduct(String SKU) throws SQLException {
-        String fetch = "SELECT * FROM ISD.PRODUCTS WHERE PRODUCTSKU = '" + SKU + "'";
+    //takes param productID of type string and returns Product which has unique productID in DB
+    public Product findProduct(String productID) throws SQLException {
+        String fetch = "SELECT * FROM ISD.PRODUCTS WHERE PRODUCTID = '" + productID + "'";
         ResultSet rs = st.executeQuery(fetch);
         
         while(rs.next()) {
-            String productSKU = rs.getString(1);
+            String ID = rs.getString(1);
             String name = rs.getString(2);
             double price = rs.getDouble(3);
             int stock = rs.getInt(4);
             boolean status = rs.getBoolean(5);
             String category = rs.getString(6);
             
-            if(SKU.toUpperCase().matches(productSKU.toUpperCase())){
-                return new Product(productSKU, name, price, stock, status, category);
+            if(ID.toUpperCase().matches(productID.toUpperCase())){
+                return new Product(productID, name, price, stock, status, category);
             }
         }
         return null;
@@ -127,13 +127,13 @@ public class DBManager {
         ArrayList<Product> temp = new ArrayList();
         
         while(rs.next()){
-            String SKU = rs.getString(1);
+            String ID = rs.getString(1);
             String name = rs.getString(2);
             double price = rs.getDouble(3);
             int stock = rs.getInt(4);
             boolean status = rs.getBoolean(5);
             String category = rs.getString(6);
-            temp.add(new Product(SKU,name,price,stock,status,category));
+            temp.add(new Product(ID,name,price,stock,status,category));
         }
         
         return temp;
@@ -155,9 +155,9 @@ public class DBManager {
     }
     
     //look up product by SKU and update attributes.
-    public void updateProduct(String SKU, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
-        st.executeUpdate("UPDATE ISD.PRODUCTS" + " SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE =" + productPrice + ", PRODUCTSTOCK=" + 
-                        productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTSKU ='" + SKU + "'");
+    public void updateProduct(String productID, String newProductID, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
+        st.executeUpdate("UPDATE ISD.PRODUCTS" + "SET USEREMAIL =' "+ newProductID +"', SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE =" + productPrice + ", PRODUCTSTOCK=" + 
+                        productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTID ='" + newProductID + "'");
         System.out.println("Updated " + productName);
     }
   

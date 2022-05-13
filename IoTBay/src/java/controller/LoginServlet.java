@@ -58,6 +58,11 @@ public class LoginServlet extends HttpServlet {
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("welcome.jsp").include(request, response);
             }
+            else{
+                errors.add("Error: User not found or password was incorrect. ");
+                session.setAttribute("errors", errors);
+                request.getRequestDispatcher("login.jsp").include(request, response);
+            }
         }
         else{
             session.setAttribute("errors",errors);

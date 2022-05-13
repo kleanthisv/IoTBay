@@ -26,7 +26,7 @@
             //grab errors from session. Errors are populated in Servlet.
             ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
         %>
-        <div class="login-container" style=" width: 35%">
+        <div class="viewProfile" style=" width: 35%">
             <form action="RegisterServlet" method="post">
                 <label for="firstName">First Name:</label><br>
                 <input type="text" id="firstName" name="firstName"><br>
