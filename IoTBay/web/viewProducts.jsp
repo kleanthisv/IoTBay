@@ -45,11 +45,14 @@
         
         <br>
         
-        <form align='center' class='searchForm' action='CatalogueServlet' method='post'>
+        <div class ="searchForm">
+        <form align='center' class="searchForm" action='CatalogueServlet' method='post' style="margin:auto;max-width:300px">
             <label for="productSearch">Search:</label>
             <input type="text" id="productSearch" name="productSearch" placeholder="Search Products by name"><br>
             <input type="submit" value="Search">
         </form>
+            </div>
+
         
         <br>
         
