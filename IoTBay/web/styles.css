@@ -459,6 +459,7 @@ tr {
   float: middle;
   width: 100%;
   background: #f1f1f1;
+  font-family: Tauri;
 }
 
 .searchForm button {
