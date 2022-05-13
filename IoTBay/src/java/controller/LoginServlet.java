@@ -4,6 +4,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -27,47 +28,51 @@ public class LoginServlet extends HttpServlet {
         User user = null;
         validator.clear(session);
         
+        ArrayList<String> errors = new ArrayList();
+        
+        
+        //Check to see if there are any errors in the input.
         if(validator.checkEmpty(email,password)){
-            session.setAttribute("inputError", "Error: Email or password is empty.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+            errors.add("Error: Email or password is empty.");
         }
-        else if(!validator.validateEmail(email)){
-            session.setAttribute("emailError", "Error: Email format is incorrect.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
+        if(!validator.validateEmail(email)){
+            errors.add("Error: Email format is incorrect. Eg. john@email.com");
         }
-        else if(!validator.validatePassword(password)){
-            session.setAttribute("passwordError", "Error: Password format is incorrect.");
-            request.getRequestDispatcher("login.jsp").include(request, response);
-        }
-        else {
+        //if no errors are present, proceed with fetching the user from DB.
+        if (errors.isEmpty()) {
             try {
+                //manager.findUser will return null if no user is found to match those login details.
                 user = manager.findUser(email, password);
             } catch (SQLException ex) {
                 Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (NullPointerException ex){
+                //if user is null, that means that the login details were not correct. Create error listing that.
+                errors.add("Error: User not found or password was incorrect. ");
+                session.setAttribute("errors", errors);
+                request.getRequestDispatcher("login.jsp").include(request, response);
             }
             
-            //if login is successful
-            if(user != null){
+            //if user is not null, that means we successfully fetched a user from the DB.
+            //set the user attribute in the session and redirect to the welcome page.
+            if (user != null) {
                 session.setAttribute("user", user);
                 request.getRequestDispatcher("welcome.jsp").include(request, response);
             }
-            else{
-                session.setAttribute("existError", "Error: User not found or password was incorrect.");
-                request.getRequestDispatcher("login.jsp").include(request, response);
-            }
         }
+        else{
+            session.setAttribute("errors",errors);
+            request.getRequestDispatcher("login.jsp").include(request, response);
+        }
+        //if login is successful
+        
     }
     
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         
         HttpSession session = request.getSession();
-        boolean isGuest = Boolean.parseBoolean(request.getParameter("guest"));
-        
-        if(isGuest){
-            session.setAttribute("user", new User());
-            request.getRequestDispatcher("welcome.jsp").include(request, response);
-        }
+        session.setAttribute("user", new User());
+        request.getRequestDispatcher("welcome.jsp").include(request, response);
     }
 
 }

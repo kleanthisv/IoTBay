@@ -4,6 +4,7 @@ package controller;
 
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.ServletException;
@@ -34,6 +35,8 @@ public class RegisterServlet extends HttpServlet {
         validator.clear(session);
         User user = null;
         
+        ArrayList<String> errors = new ArrayList();
+        
         String fName = request.getParameter("firstName");
         String lName = request.getParameter("lastName");
         String email = request.getParameter("email");
@@ -42,62 +45,53 @@ public class RegisterServlet extends HttpServlet {
         String phoneNum = request.getParameter("phoneNum");
         
         if( validator.checkEmpty(email, password) || validator.checkEmpty(fName, lName)){
-            session.setAttribute("emptyError", "Error: All fields required.");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error empty");
+            errors.add("Error: All fields required.");
         }
-        else if(!validator.validatePhone(phoneNum)){
-            session.setAttribute("phoneError", "Error: Phone numbers must only contain numbers and be 10 digits long. Eg. 0412345678");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error phone invalid");
+        if(!validator.validatePhone(phoneNum)){
+            errors.add("Error: Phone numbers must only contain numbers and be 10 digits long. Eg. 0412345678");
         }
-        else if(!validator.validateDate(date)){
-            session.setAttribute("dateError", "Error: Invalid date entered.");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error date invalid");
+        if(!validator.validateDate(date)){
+            errors.add("Error: Invalid date entered.");
         }
-        else if(!validator.validateEmail(email)){
-            session.setAttribute("emailError", "Error: Incorrect email format. eg. john@email.com");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error email invalid");
+        if(!validator.validateEmail(email)){
+            errors.add("Error: Incorrect email format. eg. john@email.com");
         }
-        else if(!validator.validatePassword(password)){
-            session.setAttribute("passwordError", "Error: Passwords must be atleast 4 character long, and not contain special characters.");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error password invalid");
+        if(!validator.validatePassword(password)){
+            errors.add("Error: Passwords must be atleast 4 character long, and not contain special characters.");
         }
-        else if(!validator.validateName(fName) || !validator.validateName(lName)){
-            session.setAttribute("nameError", "Error: Names must be proper nouns and cannot contain numbers or special characters.");
-            request.getRequestDispatcher("register.jsp").include(request, response);
-            System.out.println("error name invalid");
+        if(!validator.validateName(fName) || !validator.validateName(lName)){
+            errors.add("Error: Names must be proper nouns and cannot contain numbers or special characters.");
         }
-        else{
-            try{
-                if(manager.userExists(email)){
-                    session.setAttribute("existsError", "Error: A user already exists under that email address.");
-                    request.getRequestDispatcher("register.jsp").include(request, response);
-                    System.out.println("error user exists");
-                }    
-            }catch (SQLException ex) {
-                Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex); 
+        //Check if user exists in DB.
+        try {
+            if (manager.userExists(email)) {
+                errors.add("Error: A user already exists under that email address.");
             }
-            
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        //if errors are present, do not submit.
+        if(!errors.isEmpty()){
+            session.setAttribute("errors", errors);
+            request.getRequestDispatcher("register.jsp").include(request, response);            
+        }
+        else {
             try {
-                manager.addUser(email, fName, lName, date, phoneNum , password, "CUSTOMER");
-                System.out.println("creating user in DB");
-                
+                manager.addUser(email, fName, lName, date, phoneNum, password, "CUSTOMER");
+
                 user = manager.findUser(email, password);
-                System.out.println("User created and selected.");
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
             }
-            
-            if(user != null){
-                session.setAttribute("user",user);
-                request.getRequestDispatcher("welcome.jsp").include(request, response);
-            }
         }
         
+
+        if (user != null) {
+            session.setAttribute("user", user);
+            request.getRequestDispatcher("welcome.jsp").include(request, response);
+        }
+
         
     }
 }

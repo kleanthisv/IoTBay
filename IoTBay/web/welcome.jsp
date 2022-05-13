@@ -10,9 +10,13 @@
 <html>
 
     <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Welcome</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles.css">
+
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>Home Page</title>
     </head>
     <body>
         
@@ -25,17 +29,22 @@
         
         <div class="navBar">
             <a class="title">Home Page</a>
-            <%if(user.isGuest()){%>
-                <a href="login.jsp"> Login </a>
-            <%}else{%>
-                <a href="logout.jsp"> Log Out</a>
-            <%}%>
+            <%if (user.isGuest()) {%>
+            <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
+            <%} else {%>
+            <a href="logout.jsp"> Log Out</a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="viewProfile.jsp"> Profile </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <%}%>
+
+
         </div>
 
         <p> Welcome <%= (user.getFName() != null ? user.getFName() : "")%> </p>
-        <p> email: <%= user.getEmail() %> </p>
+        <p> <%= (user.getEmail() != null ? "email: " + user.getEmail() : "")%> </p>
         <p> Your permissions are: <%= user.getType() %></p
         <br>
     </body>
