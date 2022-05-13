@@ -20,11 +20,11 @@ public class EditProductServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
-        String SKU = request.getParameter("sku");
+        String productID = request.getParameter("ID");
         ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("products");
         Product productSelection = null;
         for(Product p : productList){
-            if(SKU.matches(p.getSKU())){
+            if(productID.matches(p.getID())){
                 productSelection = p;
             }
         }
@@ -46,11 +46,11 @@ public class EditProductServlet extends HttpServlet {
         String newCategory = request.getParameter("newCategory");
         System.out.println(newName);
         //double newPrice = (String) request.getAttribute("newPrice");
-        //int newStock = (Integer) r-equest.getAttribute("newStock");
-        
+        //int newStock = (Integer) request.getAttribute("newStock");
+        String newID = (String) request.getAttribute("newID");
         
         try {
-            manager.updateProduct(p.getSKU(),newName,50,5,true,newCategory);
+            manager.updateProduct(p.getID(),newID,newName,50,5,true,newCategory);
         } catch (SQLException ex) {
             Logger.getLogger(EditProductServlet.class.getName()).log(Level.SEVERE, null, ex);
         }

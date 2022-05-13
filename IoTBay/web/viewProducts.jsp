@@ -63,7 +63,7 @@
         <table align="center" class="productTable">
             <thead>
                 <tr>
-                    <th>Product SKU</th>
+                    <th>Product ID</th>
                     <th>Product Name</th>
                     <th>Category</th>
                     <th>Price</th>
@@ -77,7 +77,7 @@
             %>
 
             <tr> 
-                <td><%=p.getSKU()%></td>
+                <td><%=p.getID()%></td>
                 <td><%=p.getName()%></td>
                 <td><%=p.getCategory()%></td>
                 <td><%=p.getPrice()%></td>
@@ -85,7 +85,7 @@
                 <% if(user.isStaff()) {
                 %>
                 <td><a href="" ><button class="actionBtn">Add to Cart</button></a></td>
-                <td><a href="EditProductServlet?sku=<%= p.getSKU()%>" ><button class="actionBtn">Edit</button></a></td>
+                <td><a href="EditProductServlet?ID=<%= p.getID()%>" ><button class="actionBtn">Edit</button></a></td>
                 <td><a href="" ><button class="actionBtn">Delete</button></a></td>
                 <%
                     }else{

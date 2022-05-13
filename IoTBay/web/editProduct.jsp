@@ -29,8 +29,11 @@
         
         <div class ="editform">
         <form action="EditProductServlet" method="post">
+            <label for="newID">Product ID:</label><br>
+            <input type="text" id="newID" name="newID" value="<%=(p.getID())%>" placeholder="Product ID"><br>
+            
             <label for="newName">Product Name:</label><br>
-            <input type="text" id="newName" name="newName" value="<%=(p.getName())%>" placeholder="Name"><br>
+            <input type="text" id="newName" name="newName" value="<%=(p.getName())%>" placeholder="Product Name"><br>
 
             <label for="newPrice">Product Price:</label><br>
             <input type="text" id="newPrice" name="newPrice" value="<%=(p.getPrice())%>" placeholder="Price"><br>
@@ -40,7 +43,7 @@
 
             <label for="newCategory">Product Category:</label><br>
             <input type="text" id="newCategory" name="newCategory" value="<%=(p.getCategory())%>" placeholder="Category"><br>
-            <br>
+            
             <button type="submit"class ="actionBtnEdit" >Save Changes</button>
         </form>
             

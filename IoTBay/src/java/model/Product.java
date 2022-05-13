@@ -11,7 +11,7 @@ package model;
  */
 public class Product {
     
-    private String SKU;
+    private String ID;
     private String name;
     private double price;
     private int stock;
@@ -19,8 +19,8 @@ public class Product {
     private String category;
     
     //Constructor
-    public Product(String SKU, String name, double price, int stock, boolean status, String category){
-        this.SKU = SKU;
+    public Product(String ID, String name, double price, int stock, boolean status, String category){
+        this.ID = ID;
         this.name = name;
         this.price = price;
         this.stock = stock;
@@ -31,8 +31,8 @@ public class Product {
     public Product(){}
     
     //GETTERS
-    public String getSKU(){
-        return this.SKU;
+    public String getID(){
+        return this.ID;
     }
     
     public String getName(){
