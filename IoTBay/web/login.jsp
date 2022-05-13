@@ -4,6 +4,7 @@
     Author     : Kleanthis
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -20,16 +21,14 @@
         <div class="navBar">
             <a class="title" style>Login</a>
             <a href="register.jsp"> Register </a>
-            <a href="welcome.jsp"> Home </a>
+            <a href="index.jsp"> Home </a>
         </div>
 
         <%
-            String existError = (String) session.getAttribute("existError");
-            String emailError = (String) session.getAttribute("emailError");
-            String passError = (String) session.getAttribute("passwordError");
-            String inputError = (String) session.getAttribute("inputError");
+            //grab errors from session. Errors are populated in Servlet.
+            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
         %>
-        <div class="container">
+        <div class="login-container">
             <form action="LoginServlet" method="post">
                 <label for="email">Email:</label>
                 <input type="text" id="email" name="email" placeholder="Your email..">
@@ -39,10 +38,18 @@
 
                 <input type="submit" value="Login">
             </form>
-            <p class="error"> <%= (inputError != null ? inputError : "")%></p>
-            <p class="error"> <%= (existError != null ? existError : "")%></p>
-            <p class="error"> <%= (emailError != null ? emailError : "")%></p>
-            <p class="error"> <%= (passError != null ? passError : "")%></p>
+
+            <%
+                //if there are errors in the session, print a paragraph displaying each one.
+                if (errors != null) {
+                    for (String error : errors) {
+            %>
+            <p class="error"> <%= error%> </p>
+            <%
+                    }
+                }
+            %>
+
         </div>
 
 

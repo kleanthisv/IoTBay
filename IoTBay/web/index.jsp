@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-
+<%-- 
+    Written by: Kleanthis
+--%>
 <html>
     <head>
         <title>IoT Bay</title>
@@ -13,10 +15,20 @@
     </head>
     <body>
         <div class="navBar">
-            <a class="title">Welcome to IoT Bay</a>
-            <a href="login.jsp"> Login </a>
-            <a href="RegisterServlet"> Register </a>
-            <a href="LoginServlet?guest=true"> Guest </a>         
+            <a class="title">IoT Bay</a>   
+        </div>
+        
+        <div class="index-container">
+            <h1 align="center">Welcome to IoT Bay</h1>
+            <form action="login.jsp" method="get">
+                <input type="submit" value="Login">
+            </form>
+            <form action="RegisterServlet" method="get">
+                <input type="submit" value="Register">
+            </form>
+            <form action="LoginServlet" method="get">
+                <input type="submit" value="Guest">
+            </form>
         </div>
 
         <jsp:include page="/ConnServlet" flush="true"/>

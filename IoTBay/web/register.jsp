@@ -4,6 +4,7 @@
     Author     : Kleanthis
 --%>
 
+<%@page import="java.util.ArrayList"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -22,16 +23,10 @@
             <a href="welcome.jsp"> Guest </a>         
         </div>
         <%
-            String existsError = (String) session.getAttribute("existsError");
-            String nameError = (String) session.getAttribute("nameError");
-            String emailError = (String) session.getAttribute("emailError");
-            String passError = (String) session.getAttribute("passwordError");
-            String inputError = (String) session.getAttribute("inputError");
-            String emptyError = (String) session.getAttribute("emptyError");
-            String phoneError = (String) session.getAttribute("phoneError");
-            String dateError = (String) session.getAttribute("dateError");
+            //grab errors from session. Errors are populated in Servlet.
+            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
         %>
-        <div class="container" style=" width: 35%">
+        <div class="login-container" style=" width: 35%">
             <form action="RegisterServlet" method="post">
                 <label for="firstName">First Name:</label><br>
                 <input type="text" id="firstName" name="firstName"><br>
@@ -54,13 +49,18 @@
                 <input type="submit" value="Register">
 
             </form>
-            <p class="error"> <%= (nameError != null ? nameError : "")%></p>
-            <p class="error"> <%= (existsError != null ? existsError : "")%></p>
-            <p class="error"> <%= (emailError != null ? emailError : "")%></p>
-            <p class="error"> <%= (passError != null ? passError : "")%></p>
-            <p class="error"> <%= (emptyError != null ? emptyError : "")%></p>
-            <p class="error"> <%= (phoneError != null ? phoneError : "")%></p>
-            <p class="error"> <%= (dateError != null ? dateError : "")%></p>
+            
+            <%
+                //if there are any errors, print a <p> for each of them.
+                if (errors != null) {
+                    for (String error : errors) {
+            %>
+            <p class="error"> <%= error%> </p>
+            <%
+                    }
+                }
+            %>
+            
         </div>
     </body>
 </html>
