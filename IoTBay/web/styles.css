@@ -435,8 +435,7 @@ input[type="password"]:focus {
 	outline: none;
 	padding: .8em 0;
 	text-shadow: 0 1px #68B25B;
-<<<<<<< HEAD
-=======
+
 }
 
 tr {
@@ -484,5 +483,4 @@ tr {
   content: "";
   clear: both;
   display: table;
->>>>>>> 5712fac5631be2ef0ad36a3cc269c93dc9da2083
 }
