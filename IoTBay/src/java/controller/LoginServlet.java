@@ -32,7 +32,7 @@ public class LoginServlet extends HttpServlet {
         
         
         //Check to see if there are any errors in the input.
-        if(validator.checkEmpty(email,password)){
+        if(validator.checkEmpty(password) || validator.checkEmpty(email)){
             errors.add("Error: Email or password is empty.");
         }
         if(!validator.validateEmail(email)){

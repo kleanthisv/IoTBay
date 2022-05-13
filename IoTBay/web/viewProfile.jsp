@@ -27,6 +27,9 @@
             User user = (User) session.getAttribute("user");
             String searchError = (String) session.getAttribute("searchError");
             System.out.println(searchError);
+            //grab errors from session. Errors are populated in Servlet.
+            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
+
         %>
 
         <div class="navBar">
@@ -44,25 +47,25 @@
         </div>
         
         <div class="viewProfile">
-            <form style="padding-bottom: 0px;" action="viewProfileServlet" method="post">
+            <form style="padding-bottom: 0px;" action="viewProfileServlet" method="post" autocomplete="off">
                 <h2> Update Details: </h2>
                 <label for="email">Email:</label><br>
-                <input type="text" id="email" name="email" placeholder="Email Address"><br>
+                <input type="text" id="email" name="email" placeholder="Email Address" value="<%= user.getEmail()%>"><br>
                 
                 <label for="firstName">First Name:</label><br>
-                <input type="text" id="firstName" name="firstName" placeholder="First Name"><br>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" value="<%= user.getFName()%>"><br>
 
                 <label for="lastName">Last Name:</label><br>
-                <input type="text" id="lastName" name="lastName" placeholder="Last Name"><br>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" value="<%= user.getLName()%>"><br>
                 
                 <label for="birthday">Birthday:</label><br>
-                <input type="date" id="birthday" name="birthday"><br>
+                <input type="date" id="birthday" name="birthday" value="<%= user.getDOB()%>"><br>
                 
                 <label for="phoneNum">Phone Number:</label><br>
-                <input type="text" id="phoneNum" name="phoneNum" placeholder="Phone Number"><br>
+                <input type="text" id="phoneNum" name="phoneNum" placeholder="Phone Number" value="<%= user.getPhoneNum()%>"><br>
                 
                 <h3>Permissions:</h3>
-                <p>Staff</p>
+                <p><%= user.getType()%></p>
                 
                 <h2> Change Password: </h2>
                 <label for="password">Current Password:</label><br>
@@ -78,6 +81,17 @@
             <form style="padding-top: 0px;" action="viewProfileServlet" method="get">
                 <input class="centerH" type="submit" value="Delete Account">
             </form>
+            
+            <%
+                //if there are any errors, print a <p> for each of them.
+                if (errors != null) {
+                    for (String error : errors) {
+            %>
+            <p class="error"> <%= error%> </p>
+            <%
+                    }
+                }
+            %>
         </div>
         
         

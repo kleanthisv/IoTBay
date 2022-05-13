@@ -48,7 +48,7 @@ public class DBManager {
 
     //update a user details in the database   
     public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
-        st.executeUpdate("UPDATE ISD.USERS" + "SET USEREMAIL =' "+ newEmail +"', SET USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
+        st.executeUpdate("UPDATE ISD.USERS" + "SET USEREMAIL ='"+ newEmail +"', USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
                         DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "' WHERE USEREMAIL ='" + email + "'");
     }
 
@@ -97,7 +97,7 @@ public class DBManager {
     
     //craate a new Product in the DB.
     public void addProduct(String productID, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
-        st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + productID.toUpperCase() + "', '" + productName + "', '" + productPrice + "', '" + productStock + "', " + productStatus  + ", '" + productCategory.toUpperCase() + "')");
+        st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + productID.toUpperCase() + "', '" + productName + "'," + productPrice + "," + productStock + ", " + productStatus  + ", '" + productCategory.toUpperCase() + "')");
     }
     
     //takes param productID of type string and returns Product which has unique productID in DB
@@ -154,11 +154,11 @@ public class DBManager {
     return false;
     }
     
-    //look up product by SKU and update attributes.
+    //look up product by ID and update attributes.
     public void updateProduct(String productID, String newProductID, String productName, double productPrice, int productStock, boolean productStatus, String productCategory) throws SQLException{
-        st.executeUpdate("UPDATE ISD.PRODUCTS" + "SET USEREMAIL =' "+ newProductID +"', SET PRODUCTNAME ='" + productName + "', PRODUCTPRICE =" + productPrice + ", PRODUCTSTOCK=" + 
-                        productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTID ='" + newProductID + "'");
-        System.out.println("Updated " + productName);
+        st.executeUpdate("UPDATE ISD.PRODUCTS" + " SET PRODUCTID ='"+ newProductID +"', PRODUCTNAME ='" + productName + "', PRODUCTPRICE =" + productPrice + ", PRODUCTSTOCK=" + 
+                        productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTID ='" + productID + "'");
+        
     }
   
     

@@ -44,7 +44,7 @@ public class RegisterServlet extends HttpServlet {
         String date = request.getParameter("birthday");
         String phoneNum = request.getParameter("phoneNum");
         
-        if( validator.checkEmpty(email, password) || validator.checkEmpty(fName, lName)){
+        if( validator.checkEmpty(email) || validator.checkEmpty(password) || validator.checkEmpty(lName) || validator.checkEmpty(fName)){
             errors.add("Error: All fields required.");
         }
         if(!validator.validatePhone(phoneNum)){
