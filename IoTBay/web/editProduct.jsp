@@ -41,8 +41,7 @@
             <label for="newCategory">Product Category:</label><br>
             <input type="text" id="newCategory" name="newCategory" value="<%=(p.getCategory())%>" placeholder="Category"><br>
             <br>
-            <button type="submit" class="actionBtn">Save Changes</button>
-        
+            <button type="submit"class ="actionBtnEdit" >Save Changes</button>
         </form>
             
         <p><%= (isEdited != null ? isEdited : "")%></p>

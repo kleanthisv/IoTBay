@@ -172,6 +172,30 @@ input[type=submit]:hover {
 }
 
 
+/* Save Changes button for Edit Product Form */
+
+
+.actionBtnEdit {
+    background-color: #1c54b5;
+    padding: 10px;
+    color: white;
+    border: none;
+    width: 105px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.actionBtnEdit:hover  {
+	 background-color: #3d74d2;
+}
+
+
+
+
+
+
+
+
 
 
 
@@ -179,16 +203,17 @@ input[type=submit]:hover {
 
 
 .editform body {
+    
 	background: #384047;
 	font-family: sans-serif;
 	font-size: 10px
 }
 
 .editform form {
-	background: #fff;
+	background: #ededed;
 	padding: 4em 4em 2em;
-	max-width: 400px;
-	margin: 100px auto 0;
+	max-width: 300px;
+	margin: 70px auto 0;
 	box-shadow: 0 0 1em #222;
 	border-radius: 5px;
 }
@@ -205,12 +230,15 @@ input[type=submit]:hover {
 	color: #333;
 }
 
+/* Product field  */
+
 .editform input {
 	display: block;
 	box-sizing: border-box;
 	width: 100%;
 	outline: none
 }
+
 
 .editform input[type="text"],
 input[type="password"] {
@@ -294,4 +322,45 @@ input[type="password"]:focus {
 tr {
    border: 2px solid #fff; 
     
+}
+
+/* Search Button for Catalogue Page */
+
+.searchForm body {
+  font-family: Verdana;
+}
+
+.searchForm * {
+  box-sizing: border-box;
+}
+
+.searchForm input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 2px solid grey;
+  float: middle;
+  width: 100%;
+  background: #f1f1f1;
+}
+
+.searchForm button {
+  float: middle;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+.searchForm button:hover {
+  background: #0b7dda;
+}
+
+.searchForm ::after {
+  content: "";
+  clear: both;
+  display: table;
 }
