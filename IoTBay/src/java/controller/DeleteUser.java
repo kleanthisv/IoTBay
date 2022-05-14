@@ -53,8 +53,9 @@ public class DeleteUser extends HttpServlet {
             
             if(temp!=null) {
                 manager.deleteUser(email);
+                // set the users attribute again after deletion
                 ArrayList<User> Users = new ArrayList();
-                Users = manager.getAllUsers();
+                Users = manager.getAllUsers(); 
                 session.setAttribute("users", Users);
 
                 session.setAttribute("searchError", "User successfully deleted");

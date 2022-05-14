@@ -26,7 +26,7 @@
             String userSearchError = (String) session.getAttribute("userSearchError");
             System.out.println(userSearchError);
         %>
-        
+
         <div class="navBar">
             <a class="title">Manage Users</a>
             <a href="logout.jsp"> Log Out</a>
@@ -35,22 +35,22 @@
             <a href="CatalogueServlet"> Catalogue </a>
             <a href="manageUsers.jsp"> Manage Users </a>
         </div>
-        
+
         <br>
-        
+
         <form align='center' class="searchForm" action='UserServlet' method='post' style="margin:auto;max-width:300px">
             <label for="userSearch" class="searchTextField" >Search:</label>
             <input type="text" class ="searchForm"id="userSearch" name="userSearch" placeholder="Search Users by name or Phone number"><br>
             <input type="submit" class="SearchButtonP" value="Search">
         </form>
 
-        
+
         <br>
-        
+
         <p class="error" align="center"> <%= (userSearchError != null ? userSearchError : "")%></p>
-        
+
         <br>
-        
+
         <div class="centerH">
             <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
         </div>
@@ -67,7 +67,7 @@
                 </tr>
             </thead>
             <%
-                
+
                 for (User u : userList) {
             %>
 
@@ -78,11 +78,15 @@
                 <td><%=u.getPhoneNum()%></td>
                 <td><%=u.getDOB()%></td>
                 <td><%=u.getEmail()%></td>
-                <td><a href="" ><button class="actionBtn">Activate/deactivate</button></a></td>
+                <% if (u.isActive()) {%>
+                <td><a href="DeactivateUser?email=<%= u.getEmail()%>" ><button class="actionBtn">Deactivate</button></a></td>
+                <%} else {%>
+                <td><a href="ActivateUser?email=<%= u.getEmail()%>" ><button class="actionBtn">Activate</button></a></td>
+                <%}%>
                 <td><a href="" ><button class="actionBtn">Edit</button></a></td>
                 <td><a href="DeleteUser?email=<%= u.getEmail()%>&&password=<%= u.getPassword()%>" ><button class="actionBtn">Delete</button></a></td>
             </tr>
-            
+
 
             <%
                 }
