@@ -6,6 +6,10 @@
 package model;
 
 import java.io.Serializable;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
 
 /**
  *
@@ -65,6 +69,10 @@ public class User implements Serializable{
         this.password = password;
     }
     
+    public String getDOB() throws ParseException {
+        return this.DOB;
+    }
+
     public String getFName(){
         return this.FName;
     }

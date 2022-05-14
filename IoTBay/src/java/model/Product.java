@@ -57,6 +57,14 @@ public class Product {
     
     
     //SETTERS
+    public void setID(String newID){
+        this.ID = newID;
+    }
+    
+    public void setCategory(String newCat){
+        this.category = newCat;
+    }
+    
     public void setName(String newName){
         this.name = newName;
     }

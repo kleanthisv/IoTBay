@@ -21,6 +21,7 @@ public class CatalogueServlet extends HttpServlet {
         HttpSession session = request.getSession();
         if(session != null) System.out.println("manager loaded");
         DBManager manager = (DBManager) session.getAttribute("manager");
+        session.setAttribute("productSelected", null);
         try {
             ArrayList<Product> products = manager.getAllProducts();
             session.setAttribute("products", products);

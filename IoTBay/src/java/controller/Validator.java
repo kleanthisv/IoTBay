@@ -9,9 +9,12 @@ public class Validator implements Serializable {
 
     private String emailPattern = "([a-zA-Z0-9]+)(([._-])([a-zA-Z0-9]+))*(@)([a-z]+)(.)([a-z]{3})((([.])[a-z]{0,2})*)";
     private String namePattern = "[A-Z][a-z]*";
+    private String idPattern = "[a-zA-Z0-9]+";
     private String passwordPattern = "[a-z0-9]{4,}";
-    private String phonePattern = "[0-9]{10}";
-    private String datePattern = "[0-9]{4}-[0-9]{2}-[0-9]{2}";
+    private String phonePattern = "\\d{10}";
+    private String datePattern = "^\\d{4}-\\d{2}-\\d{2}$";
+    private String intPattern = "^\\d+$";
+    private String doublePattern = "^(\\d+[.])?\\d+$";
 
     public Validator() {
     }
@@ -22,9 +25,21 @@ public class Validator implements Serializable {
 
         return match.matches();
     }
+    
+    public boolean validateID(String input){
+        return validate(idPattern,input);
+    }
+    
+    public boolean validateInt(String input){
+        return validate(intPattern,input);
+    }
+    
+    public boolean validateDouble(String input){
+        return validate(doublePattern,input);
+    }
 
-    public boolean checkEmpty(String email, String password) {
-        return email.isEmpty() || password.isEmpty();
+    public boolean checkEmpty(String string) {
+        return string.isEmpty();
     }
 
     public boolean validateEmail(String email) {
@@ -49,6 +64,7 @@ public class Validator implements Serializable {
 
     public void clear(HttpSession session){
         session.setAttribute("errors", null);
+        session.setAttribute("isEdited",null);
     }
 
 

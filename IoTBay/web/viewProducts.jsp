@@ -48,7 +48,7 @@
         <form align='center' class="searchForm" action='CatalogueServlet' method='post' style="margin:auto;max-width:300px">
             <label for="productSearch" class="searchTextField" >Search:</label>
             <input type="text" class ="searchForm"id="productSearch" name="productSearch" placeholder="Search Products by name"><br>
-            <input type="submit" button class="SearchButtonP" value="Search">
+            <input type="submit" class="SearchButtonP" value="Search">
         </form>
 
         
@@ -58,6 +58,9 @@
         
         <br>
         
+        <div class="centerH">
+        <a href="addProduct.jsp"><button class="SearchButtonP">Add product </button></a>
+        </div>
         <table align="center" class="productTable">
             <thead>
                 <tr>
