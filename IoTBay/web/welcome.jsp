@@ -33,11 +33,13 @@
             <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
             <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
             <%}%>
 
 
