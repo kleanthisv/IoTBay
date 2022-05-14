@@ -52,6 +52,7 @@
         <br>
         
         <div class="centerH">
+            <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
         </div>
         <table align="center" class="productTable">
             <thead>

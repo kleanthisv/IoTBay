@@ -22,7 +22,7 @@ public class User implements Serializable{
     private String DOB;
     private String phoneNumber;
     private String password;
-    private String userType; //type can be "GUEST" "CUSTOMER" "STAFF"
+    private String userType; //type can be "GUEST" "CUSTOMER" "ADMIN"
     private String streetAddress;
     private String country;
     private String postcode;

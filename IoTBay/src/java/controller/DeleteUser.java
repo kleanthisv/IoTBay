@@ -46,7 +46,6 @@ public class DeleteUser extends HttpServlet {
         
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        System.out.println("email and password are " + email + " " + password);
         User temp = null;
         
         try{
@@ -58,13 +57,11 @@ public class DeleteUser extends HttpServlet {
                 Users = manager.getAllUsers();
                 session.setAttribute("users", Users);
 
-                // TODO set attribute to alert the admin that they successfully deleted a user
+                session.setAttribute("searchError", "User successfully deleted");
 
-                System.out.println("deleted");
             }
             else{
-                //TODO set attribute for Error message stating that user was not deleted
-                System.out.println("not deleted");
+                session.setAttribute("searchError", "User was unable to be deleted");
             }
             request.getRequestDispatcher("manageUsers.jsp").include(request, response);
             response.sendRedirect("manageUsers.jsp"); // redirect to manage users
