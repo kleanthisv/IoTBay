@@ -43,6 +43,7 @@ public class User implements Serializable{
         this.DOB = DOB;
         this.phoneNumber = phoneNumber;
         this.userType = type;
+        this.isActive = true;
     }
   
     public void setFName(String FName){
