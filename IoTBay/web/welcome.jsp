@@ -33,16 +33,23 @@
             <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
+<<<<<<< Updated upstream
             <a href="PaymentServlet"> Payment </a>
             <%} else {%>
+=======
+            <%} else  {%>
+>>>>>>> Stashed changes
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
+<<<<<<< Updated upstream
             <a href="PaymentServlet"> Payment </a>
+=======
+            <%}if (user.isStaff()) {%>
+            <a href="UserServlet"> Manage Users </a>
+>>>>>>> Stashed changes
             <%}%>
-
-
         </div>
 
         <p> Welcome <%= (user.getFName() != null ? user.getFName() : "")%> </p>
