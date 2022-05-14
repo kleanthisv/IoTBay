@@ -20,6 +20,7 @@ public class UserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         DBManager manager = (DBManager) session.getAttribute("manager");
         session.setAttribute("userSelected", null);
+        session.setAttribute("userSearchError", null);
         try {
             ArrayList<User> users = manager.getAllUsers();
             session.setAttribute("users", users);
@@ -47,9 +48,12 @@ public class UserServlet extends HttpServlet {
         //filter user list based on phone number, first name, or last name
         String filterTerm = request.getParameter("userSearch");
         ArrayList<User> filteredUsers = new ArrayList();
+        //reset search error upon reopening manage users
+        session.setAttribute("userSearchError", null);
         if (filterTerm != null) {
             
             for (User u : users) {
+                String fullName = u.getFName() + " " + u.getLName();
                 if (u.getPhoneNum().contains(filterTerm)) {
                     filteredUsers.add(u);
                 }
@@ -59,12 +63,15 @@ public class UserServlet extends HttpServlet {
                 else if(u.getLName().toLowerCase().contains(filterTerm.toLowerCase())) {
                     filteredUsers.add(u);
                 }
+                else if (fullName.toLowerCase().contains(filterTerm.toLowerCase())) {
+                    filteredUsers.add(u);
+                }
             }
-            
+
             
         }
         if(filteredUsers.isEmpty() && filterTerm != null){
-                session.setAttribute("searchError", "No users found when searching for: " + filterTerm);
+                session.setAttribute("userSearchError", "No users found when searching for: " + filterTerm);
         }
         else if(filteredUsers.size() > 0){
                 session.setAttribute("users", filteredUsers);

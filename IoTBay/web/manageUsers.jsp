@@ -23,8 +23,8 @@
 
         <%
             ArrayList<User> userList = (ArrayList<User>) session.getAttribute("users");
-            String searchError = (String) session.getAttribute("searchError");
-            System.out.println(searchError);
+            String userSearchError = (String) session.getAttribute("userSearchError");
+            System.out.println(userSearchError);
         %>
         
         <div class="navBar">
@@ -47,7 +47,7 @@
         
         <br>
         
-        <p class="error" align="center"> <%= (searchError != null ? searchError : "")%></p>
+        <p class="error" align="center"> <%= (userSearchError != null ? userSearchError : "")%></p>
         
         <br>
         
