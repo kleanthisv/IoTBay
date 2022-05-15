@@ -22,6 +22,7 @@
     <body action="UserServlet">
 
         <%
+            User user = (User) session.getAttribute("user");
             ArrayList<User> userList = (ArrayList<User>) session.getAttribute("users");
             String userSearchError = (String) session.getAttribute("userSearchError");
             System.out.println(userSearchError);
@@ -29,11 +30,23 @@
 
         <div class="navBar">
             <a class="title">Manage Users</a>
+            <%if (user.isGuest()) {%>
+            <a href="login.jsp"> Login </a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="manageUsers.jsp"> Manage Users </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%}%>
+            <%if (user.isAdmin()) {%>
+            <a href="UserServlet"> Manage Users </a>
+            <%}%>
         </div>
 
         <br>

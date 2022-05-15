@@ -40,12 +40,12 @@
             <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
-            <a href="viewProfileServlet"> Profile </a>
+            <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
             <a href="PaymentServlet"> Payment </a>
             <a href="cart.jsp"> Cart </a>
             <%}%>
-            <%if (user.isStaff()) {%>
+            <%if (user.isAdmin()) {%>
             <a href="UserServlet"> Manage Users </a>
             <%}%>
         </div>
