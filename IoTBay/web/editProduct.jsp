@@ -41,7 +41,7 @@
             <%}%>
         </div>
 
-        <% if (!user.isStaff()) { %>
+        <% if (!user.isStaff() || user == null) { %>
         <h1> You do not have permissions to use this function. </h1>
         <% //make this pretty pls %>
         <%} else {%>

@@ -1,13 +1,17 @@
+<%-- 
+    Document   : create_staff
+    Created on : May 15, 2022, 7:04:39 PM
+    Author     : billi
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Delete Product</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>H</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
-
-
