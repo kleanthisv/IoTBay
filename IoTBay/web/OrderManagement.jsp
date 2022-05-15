@@ -17,7 +17,9 @@
   <body>
         <div class="navBar">
             <a class="title" style>Order</a>
-            
+            <a href=""> Logout </a>
+            <a href="cart.jsp"> Cart Page </a>
+           
         </div>
 
     </body>
