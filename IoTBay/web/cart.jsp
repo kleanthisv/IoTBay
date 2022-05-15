@@ -1,78 +1,87 @@
 <%-- 
-    Document   : Cart
-    Created on : 15/05/2022, 1:08:42 PM
-    Author     : noahd
+    Document   : viewProducts.jsp
+    Created on : 10/05/2022, 4:33:50 PM
+    Author     : alwin
 --%>
 
+<%@page import="model.User"%>
+<%@page import="model.Product"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="controller.CatalogueServlet"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head> 
+    <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="styles.css">
+
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title> Cart </title>
-        
+        <title>Cart</title>
     </head>
-    <link rel="stylesheet" type="text/css" href="styles.css">
     <body>
-        
+
+        <%
+            ArrayList<Product> cart = (ArrayList<Product>) session.getAttribute("cart");
+            User user = (User) session.getAttribute("user");
+        %>
+
         <div class="navBar">
-            <a class="title">Viewing Cart</a>
-            <a href="logout.jsp"> Logout </a>
+            <a class="title">Cart</a>
+            <%if (user.isGuest()) {%>
+            <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Home </a>
-            <a href="PaymentServlet"> Payment Options </a>
-            
+            <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%} else {%>
+            <a href="logout.jsp"> Log Out</a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="viewProfileServlet"> Profile </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%}%>
+            <%if (user.isStaff()) {%>
+            <a href="UserServlet"> Manage Users </a>
+            <%}%>
         </div>
 
-        <center><h1>Cart Content</h1></center>
-        <table width="1000" border="1" cellspacing="0" cellpadding="3" align="center"/>
-        
-        <tr>
-            <th>Item</th>
-            <th>type</th>
-            <th>Quantity</th>
-            <th>Price</th>
-            <th></th>
-            
-        </tr>
-        <tr>
-            <th>blank</th>
-            <th></th>
-            <th></th>
-            <th></th> 
-            <td><input type="submit" name="Submit" value="Remove"></td>
-            
-        </tr>
+        <br>
+
+        <a href="" align="center"><button class="SearchButtonP">Complete Order </button></a>
+
+        <table align="center" class="productTable">
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product Name</th>
+                    <th>Category</th>
+                    <th>Price</th>
+                    <th>Stock Level</th>
+                    <th colspan="3">Actions</th>
+                </tr>
+            </thead>
+            <%
+                if(cart.isEmpty()) { %>
+            <h3>Cart is empty. </h3>
+            <% } else{
+                for (Product p : cart) {
+            %>
+            <tr> 
+                <td><%=p.getID()%></td>
+                <td><%=p.getName()%></td>
+                <td><%=p.getCategory()%></td>
+                <td><%=p.getPrice()%></td>
+                <td><%=p.getStock()%></td>
+                <td><a><button class="actionBtn">Remove from Cart</button></a></td>
+            </tr>
+            <%
+                        }
+                }
+            %>
         </table>
-        
-        
-        
-        
-        <div style="text-align: center; width: 100%;"></button>
-        <table width="400" border="0" cellspacing="0" cellpadding="3" align="center"/>
-        
-        <td><input type="submit" name="Submit" value="Save"></td>
-        </table>
-        </div>
-        
-        <table width="400" border="0" cellspacing="0" cellpadding="3" align="center"/>
-        <div style="text-align: center; width: 100%;">   
-        <th><a href="process.jsp"> Checkout </a></th>
-        </div>
-        <div style="text-align: center; width: 100%;">
-        <th><a href="CatalogueManagement.jsp"> Continue Shopping </a></th>
-        </div>
-        <div>
-        <th><a href="CatalogueManagement.jsp"> Cancel Order </a></th>
-        </div>
-        </table>
-        
-        
-            
-            
-        
-        
-        
-        
-    
-        
-  
+
+    </body>
+</html>

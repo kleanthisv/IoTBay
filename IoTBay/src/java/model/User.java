@@ -82,7 +82,7 @@ public class User implements Serializable{
         this.phoneNumber = phoneNum;
     }
     
-    public String getDOB() throws ParseException {
+    public String getDOB(){
         return this.DOB;
     }
 
