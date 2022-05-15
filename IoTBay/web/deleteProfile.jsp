@@ -9,7 +9,9 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <% session.invalidate();%>
+        <%
+        session.invalidate();
+        %>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Delete</title>
 
@@ -20,8 +22,6 @@
 
     </head>
     <body>
-        
-        
         
         <div class="navBar">
             <a class="title">IoT Bay</a>   
