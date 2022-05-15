@@ -18,7 +18,7 @@ public class Log {
     private String logout;
     private String email;
 
-    public Log() {
+    public Log(String email) {
         DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
         LocalDateTime now = LocalDateTime.now();
         this.login = dtf.format(now);
@@ -32,6 +32,10 @@ public class Log {
     
     public String getLogin(){
         return this.login;
+    }
+    
+    public String getEmail(){
+        return this.email;
     }
     
     public void setLogout(String logout){
