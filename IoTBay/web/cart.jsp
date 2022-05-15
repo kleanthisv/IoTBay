@@ -23,15 +23,56 @@
             
         </div>
 
-        <h1> Cart Content </h1>
-        <table width="600" border="1" cellspacing="0" cellpadding="3" border="0"/>
+        <center><h1>Cart Content</h1></center>
+        <table width="1000" border="1" cellspacing="0" cellpadding="3" align="center"/>
         
         <tr>
             <th>Item</th>
+            <th>type</th>
             <th>Quantity</th>
-            <th>Price</th>    
+            <th>Price</th>
+            <th></th>
+            
         </tr>
-    
+        <tr>
+            <th>blank</th>
+            <th></th>
+            <th></th>
+            <th></th> 
+            <td><input type="submit" name="Submit" value="Remove"></td>
+            
+        </tr>
+        </table>
+        
+        
+        
+        
+        <div style="text-align: center; width: 100%;"></button>
+        <table width="400" border="0" cellspacing="0" cellpadding="3" align="center"/>
+        
+        <td><input type="submit" name="Submit" value="Save"></td>
+        </table>
+        </div>
+        
+        <table width="400" border="0" cellspacing="0" cellpadding="3" align="center"/>
+        <div style="text-align: center; width: 100%;">   
+        <th><a href="process.jsp"> Checkout </a></th>
+        </div>
+        <div style="text-align: center; width: 100%;">
+        <th><a href="CatalogueManagement.jsp"> Continue Shopping </a></th>
+        </div>
+        <div>
+        <th><a href="CatalogueManagement.jsp"> Cancel Order </a></th>
+        </div>
+        </table>
+        
+        
+            
+            
+        
+        
+        
+        
     
         
   
