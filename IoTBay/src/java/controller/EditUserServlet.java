@@ -32,7 +32,7 @@ public class EditUserServlet extends HttpServlet {
                     userSelection = u;
                 }
             }
-            session.setAttribute("userSelected", userSelection);
+            session.setAttribute("userSelected", userSelection);        
 
             request.getRequestDispatcher("editUser.jsp").include(request, response);
         } catch (SQLException ex) {

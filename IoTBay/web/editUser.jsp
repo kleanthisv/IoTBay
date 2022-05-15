@@ -18,20 +18,34 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body action='EditUserServlet'>
+
+        <%
+            User user = (User) session.getAttribute("user");
+            User u = (User) session.getAttribute("userSelected");
+
+            //grab errors from session. Errors are populated in Servlet.
+            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("editUserErrors");
+        %>
         <div class="navBar">
             <a class="title">Edit User</a>
+            <%if (user.isGuest()) {%>
+            <a href="login.jsp"> Login </a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="manageUsers.jsp"> Manage Users </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%}%>
+            <%if (user.isAdmin()) {%>
+            <a href="UserServlet"> Manage Users </a>
+            <%}%>
         </div>
-        <%
-            User u = (User) session.getAttribute("userSelected");
-            
-            //grab errors from session. Errors are populated in Servlet.
-            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("editUserErrors");
-        %>
         <div class="viewProfile" style=" width: 35%">
             <form action="EditUserServlet" method="post">
                 <label for="firstName">First Name:</label><br>
@@ -54,7 +68,7 @@
 
                 <label for="type">User Type</label>
                 <br>
-                <input type="radio" id="staff" name="type" value="ADMIN" 
+                <input type="radio" id="staff" name="type" value="STAFF" 
                        <%if (u.isStaff()) {%>
                        checked="true"
                        <%}%>>
