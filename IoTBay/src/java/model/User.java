@@ -116,7 +116,8 @@ public class User implements Serializable{
     }
     
     public boolean isStaff(){
-        return userType.equals("STAFF");
+        if(userType.equals("STAFF") || userType.equals("ADMIN")) return true;
+        else return false;
     }
     
     public boolean isGuest(){

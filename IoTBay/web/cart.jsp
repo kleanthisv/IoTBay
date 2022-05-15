@@ -50,7 +50,10 @@
 
         <br>
 
-        <a href="" align="center"><button class="SearchButtonP">Complete Order </button></a>
+        <div class="centerH" align="center">
+            <a href="viewProducts.jsp"><button class="SearchButtonP">Order More </button></a>
+            <button class="SearchButtonP">Complete Order</button>
+        </div>
 
         <table align="center" class="productTable">
             <thead>
@@ -64,11 +67,8 @@
                 </tr>
             </thead>
             <%
-                if(cart.isEmpty()) { %>
-            <h3>Cart is empty. </h3>
-            <% } else{
-                for (Product p : cart) {
-            %>
+                if (!cart.isEmpty()) {
+                    for (Product p : cart) {%>
             <tr> 
                 <td><%=p.getID()%></td>
                 <td><%=p.getName()%></td>
@@ -77,9 +77,14 @@
                 <td><%=p.getStock()%></td>
                 <td><a><button class="actionBtn">Remove from Cart</button></a></td>
             </tr>
-            <%
-                        }
-                }
+            <% }
+            } else {
+
+            %>
+            <h3>Cart is empty. </h3>
+
+            <%  }
+
             %>
         </table>
 
