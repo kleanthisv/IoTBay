@@ -74,6 +74,14 @@ public class User implements Serializable{
         this.isActive = active;
     }
     
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+    
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNumber = phoneNum;
+    }
+    
     public String getDOB() throws ParseException {
         return this.DOB;
     }

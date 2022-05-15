@@ -83,7 +83,7 @@
                 <%} else {%>
                 <td><a href="ActivateUser?email=<%= u.getEmail()%>" ><button class="actionBtn">Activate</button></a></td>
                 <%}%>
-                <td><a href="" ><button class="actionBtn">Edit</button></a></td>
+                <td><a href="EditUserServlet?email=<%= u.getEmail()%>" ><button class="actionBtn">Edit</button></a></td>
                 <td><a href="DeleteUser?email=<%= u.getEmail()%>&&password=<%= u.getPassword()%>" ><button class="actionBtn">Delete</button></a></td>
             </tr>
 

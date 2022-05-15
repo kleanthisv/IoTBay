@@ -48,11 +48,10 @@ public class DBManager {
     }
 
     //update a user details in the database   
-    public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
-        st.executeUpdate("UPDATE ISD.USERS" + "SET USEREMAIL ='"+ newEmail +"', USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
-                        DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "' WHERE USEREMAIL ='" + email + "'");
+    public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password, String type) throws SQLException {
+        st.executeUpdate("UPDATE ISD.USERS" + " SET USEREMAIL='"+ newEmail +"', USERFNAME='" + fName + "', USERLNAME='" + lName + "', USERDOB='" + 
+                        DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "', USERTYPE='" + type + "' WHERE USEREMAIL='" + email + "'");
     }
-
     //delete a user from the database   
     public void deleteUser(String email) throws SQLException {
         st.executeUpdate("DELETE FROM ISD.USERS WHERE USEREMAIL ='" + email + "'");
