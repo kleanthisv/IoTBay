@@ -26,6 +26,7 @@
             ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("products");
             User user = (User) session.getAttribute("user");
             String searchError = (String) session.getAttribute("searchError");
+            System.out.println(searchError);
             //grab errors from session. Errors are populated in Servlet.
             ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
             ArrayList<String> changed = (ArrayList<String>) session.getAttribute("changed");
