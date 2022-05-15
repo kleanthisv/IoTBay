@@ -47,7 +47,7 @@
             <a href="PaymentServlet"> Payment </a>
             <a href="cart.jsp"> Cart </a>
             <%}%>
-            <%if (user.isStaff()) {%>
+            <%if (user.isAdmin()) {%>
             <a href="UserServlet"> Manage Users </a>
             <%}%>
         </div>

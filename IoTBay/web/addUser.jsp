@@ -5,6 +5,7 @@
 --%>
 
 <%@page import="java.util.ArrayList"%>
+<%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -17,18 +18,31 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body action='AddUserServlet'>
+        <%
+            User user = (User) session.getAttribute("user");
+            //grab errors from session. Errors are populated in Servlet.
+            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
+        %>
         <div class="navBar">
             <a class="title">Add User</a>
+            <%if (user.isGuest()) {%>
+            <a href="login.jsp"> Login </a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="manageUsers.jsp"> Manage Users </a>
+            <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
+            <%}%>
+            <%if (user.isAdmin()) {%>
+            <a href="UserServlet"> Manage Users </a>
+            <%}%>
         </div>
-        <%
-            //grab errors from session. Errors are populated in Servlet.
-            ArrayList<String> errors = (ArrayList<String>) session.getAttribute("errors");
-        %>
         <div class="viewProfile" style=" width: 35%">
             <form action="AddUserServlet" method="post">
                 <label for="firstName">First Name:</label><br>
@@ -36,10 +50,10 @@
 
                 <label for="lastName">Last Name:</label><br>
                 <input type="text" id="lastName" name="lastName"><br>
-                
+
                 <label for="birthday">Birthday:</label><br>
                 <input type="date" id="birthday" name="birthday"><br>
-                
+
                 <label for="phoneNum">Phone Number:</label><br>
                 <input type="text" id="phoneNum" name="phoneNum"><br>
 
@@ -48,21 +62,21 @@
 
                 <label for="password">Password:</label><br>
                 <input type="password" id="password" name="password"><br>
-                
+
                 <label for="type">User Type</label>
                 <br>
-                <input type="radio" id="staff" name="type" value="ADMIN">
+                <input type="radio" id="staff" name="type" value="STAFF">
                 <label for="staff">Staff</label>
                 <br>
                 <input type="radio" id="customer" name="type" value="CUSTOMER">
                 <label for="customer">Customer</label>
                 <br>
-                
+
                 <br>
                 <input type="submit" value="Add User">
 
             </form>
-            
+
             <%
                 //if there are any errors, print a <p> for each of them.
                 if (errors != null) {
@@ -73,7 +87,7 @@
                     }
                 }
             %>
-            
+
         </div>
     </body>
 </html>

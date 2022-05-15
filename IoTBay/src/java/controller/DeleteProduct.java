@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import model.User;
+import model.Product;
 import model.dao.*;
 /**
  *
@@ -34,38 +34,37 @@ public class DeleteProduct extends HttpServlet {
         {
             connector = new DBConnector();
         }catch (ClassNotFoundException | SQLException ex){
-            java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE,null,ex);
+            java.util.logging.Logger.getLogger(DeleteProduct.class.getName()).log(Level.SEVERE,null,ex);
         }
         
         try
         {
             manager = new DBManager(connector.openConnection());
         }catch (SQLException ex){
-            java.util.logging.Logger.getLogger(UserServlet.class.getName()).log(Level.SEVERE,null,ex);
+            java.util.logging.Logger.getLogger(DeleteProduct.class.getName()).log(Level.SEVERE,null,ex);
         }
         
-        String email = request.getParameter("email");
-        String password = request.getParameter("password");
-        User temp = null;
+        String productID = request.getParameter("ID");
+        Product temp = null;
         
         try{
-            temp = manager.findUser(email, password);
+            temp = manager.findProduct(productID);
             
             if(temp!=null) {
-                manager.deleteUser(email);
+                manager.deleteProduct(productID);
                 // set the users attribute again after deletion
-                ArrayList<User> Users = new ArrayList();
-                Users = manager.getAllUsers(); 
-                session.setAttribute("users", Users);
+                ArrayList<Product> Product = new ArrayList();
+                Product = manager.getAllProducts(); 
+                session.setAttribute("products", Product);
 
-                session.setAttribute("searchError", "User successfully deleted");
+                session.setAttribute("error", "Product deleted successfully");
 
             }
             else{
-                session.setAttribute("searchError", "User was unable to be deleted");
+                session.setAttribute("error", "Product was unable to be deleted");
             }
-            request.getRequestDispatcher("manageUsers.jsp").include(request, response);
-            response.sendRedirect("manageUsers.jsp"); // redirect to manage users
+            request.getRequestDispatcher("viewProducts.jsp").include(request, response);
+            response.sendRedirect("viewProducts.jsp"); // redirect to manage users
         }catch (SQLException ex) {
            System.out.println(ex.getErrorCode() + " and " + ex.getMessage());
         }

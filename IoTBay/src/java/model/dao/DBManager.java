@@ -172,6 +172,12 @@ public class DBManager {
                         productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTID ='" + productID + "'");
         
     }
+    
+    public void deleteProduct(String productID) throws SQLException {
+        st.executeUpdate("DELETE FROM ISD.PRODUCTS WHERE PRODUCTID ='" + productID + "'");
+    }
+    
+    
   
     public void setLogout(String logID, String logOut) throws SQLException{
         st.executeUpdate("UPDATE ISD.LOGS" + " SET LOGOUT='" + logOut + "' WHERE LOGID='" + logID + "'");
