@@ -15,13 +15,22 @@ import model.User;
 import model.dao.DBManager;
 
 public class viewProfileServlet extends HttpServlet {
-    
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         validator.clear(session);
+        
+        boolean deleteUser = Boolean.parseBoolean(request.getParameter("delete"));
+        
+        if(deleteUser){
+            System.out.println("delete is true");
+        }
+        else{
+            System.out.println("delete is false");
+        }
         request.getRequestDispatcher("viewProfile.jsp").include(request, response);
     }
 
@@ -44,9 +53,9 @@ public class viewProfileServlet extends HttpServlet {
         String password = request.getParameter("password");
         String date = request.getParameter("birthday");
         String phoneNum = request.getParameter("phoneNum");
-        String newPassword = request.getParameter("newPasword");
+        String newPassword = request.getParameter("newPassword");
         String newPasswordConfirm = request.getParameter("newPasswordConfirm");
-        
+
         if (!phoneNum.equals(user.getPhoneNum())) {
             if (!validator.validatePhone(phoneNum)) {
                 errors.add("Error: Phone numbers must only contain numbers and be 10 digits long. Eg. 0412345678");
@@ -77,18 +86,19 @@ public class viewProfileServlet extends HttpServlet {
                 }
             }
         }
-        
-        if (password != null || !password.isEmpty()) {
+
+        if (!password.isEmpty()) {
             if (password.equals(user.getPassword())) {
+                System.out.println(newPassword);
+                System.out.println(newPasswordConfirm);
                 if (newPassword.equals(newPasswordConfirm)) {
                     if (!validator.validatePassword(newPassword)) {
                         errors.add("Error: Passwords must be atleast 4 character long, and not contain special characters.");
                     } else {
-                        changed.add("Password updated");
+                        changed.add("Password updated.");
                         changePassword = true;
                     }
                 }
-
             } else {
                 errors.add("Error: Current password is incorrect.");
             }
@@ -118,13 +128,13 @@ public class viewProfileServlet extends HttpServlet {
                 //edit user details
 
                 if (changePassword) {
-                    manager.updateUser(user.getEmail(), email, fName, lName, date, phoneNum, password, user.getType());
+                    manager.updateUser(user.getEmail(), email, fName, lName, date, phoneNum, newPassword, user.getType());
                     user.setEmail(email);
                     user.setFName(fName);
                     user.setLName(lName);
                     user.setDOB(date);
                     user.setPhoneNumber(phoneNum);
-                    user.setPassword(password);
+                    user.setPassword(newPassword);
                     session.setAttribute("changed", changed);
                     request.getRequestDispatcher("viewProfile.jsp").include(request, response);
                 } else {
