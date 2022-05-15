@@ -60,6 +60,10 @@
         <servlet-name>ActivateUser</servlet-name>
         <servlet-class>controller.ActivateUser</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>EditUserServlet</servlet-name>
+        <servlet-class>controller.EditUserServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
         <url-pattern>/ConnServlet</url-pattern>
@@ -119,6 +123,10 @@
     <servlet-mapping>
         <servlet-name>ActivateUser</servlet-name>
         <url-pattern>/ActivateUser</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditUserServlet</servlet-name>
+        <url-pattern>/EditUserServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

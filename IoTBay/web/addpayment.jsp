@@ -18,11 +18,16 @@
     </head>
     
     <body>
-        
+        <div class="navBar">
+            <a class="title" style>Login</a>
+            <a href="register.jsp"> Register </a>
+            <a href="index.jsp"> Home </a>
+            <a href="PaymentManagement.jsp"> Payment </a>
+            
         <form action="Payment_CreateServlet" method="post">
        
-        <h1> Order #${orderId} </h1>
-        <h2> Total Amount A$${order.getAmount()} </h2>
+        <h1> Order No. </h1>
+        <h2> Total Amount $AUD </h2>
         
         <div class="body-text"> 
             <h3><label for name="paymentMethod">Payment Method</label></h3>
@@ -44,7 +49,7 @@
              <input type="submit" value="Pay">
         </form>
        
-             <p><a class= "button" style="center" href="Payment1_OrderCart.jsp">Cancel</a></p>
+             <p><a class= "button" style="center" href="welcome.jsp">Cancel</a></p>
                 
         </div>
        

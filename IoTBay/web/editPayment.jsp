@@ -14,10 +14,18 @@
         <link rel="stylesheet" type="text/css" href="styles.css">
     </head>
     <body>
+         <div class="navBar">
+            <a class="title">Add Product</a>
+            <a href="logout.jsp"> Log Out</a>
+            <a href="welcome.jsp"> Home </a>
+            <a href="viewProfile.jsp"> Profile </a>
+            <a href="CatalogueServlet"> Catalogue </a>
+            <%}%>
+        </div>
         
          <form action = "Payment_UpdateServlet" method="post">
         
-        <h1> Order #${orderId} </h1>
+        <h1> Order No. ${orderId} </h1>
         <h2> Total Amount A$${order.getAmount()} </h2>
         
         <div class="body-text"> 
