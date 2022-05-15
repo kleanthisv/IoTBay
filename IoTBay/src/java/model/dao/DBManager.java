@@ -184,11 +184,11 @@ public class DBManager {
     }
     
     public void setLogin(String logID, String logOut) throws SQLException{
-        st.executeUpdate("UPDATE ISD.LOGS" + " SET LOGOUT='" + logOut + "' WHERE EMAIL='" + logID + "'");
+        st.executeUpdate("UPDATE ISD.LOGS" + " SET LOGOUT='" + logOut + "' WHERE LOGID='" + logID + "'");
     }
     
-    public void createLog(String email, String logIn) throws SQLException{
-        st.executeUpdate("INSERT INTO ISD.PRODUCTS" + " VALUES ('" + email + "'," + logIn +"', " + "NULL )");
+    public void createLog(Log log) throws SQLException{
+        st.executeUpdate("INSERT INTO ISD.LOGS (USEREMAIL,LOGIN,LOGOUT) VALUES ('" + log.getEmail() + "','" + log.getLogin() +"', " + "NULL )");
     }
     
     public ArrayList<Log> getAllLogs() throws SQLException{
@@ -201,7 +201,22 @@ public class DBManager {
             String email = rs.getString(2);
             String login = rs.getString(3);
             String logout = rs.getString(4);
-            temp.add(new Log(email,login,logout));
+            temp.add(new Log(ID,email,login,logout));
+        }
+        
+        return temp;
+    }
+    public ArrayList<Log> getUserLogs(String email) throws SQLException{
+        String fetch = "SELECT * FROM ISD.LOGS WHERE USEREMAIL='" + email + "'";
+        ResultSet rs = st.executeQuery(fetch);
+        ArrayList<Log> temp = new ArrayList();
+        
+        while(rs.next()){
+            String ID = rs.getString(1);
+            String userEmail = rs.getString(2);
+            String login = rs.getString(3);
+            String logout = rs.getString(4);
+            temp.add(new Log(ID,userEmail,login,logout));
         }
         
         return temp;

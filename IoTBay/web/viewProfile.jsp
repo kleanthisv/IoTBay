@@ -89,6 +89,9 @@
             <form style="padding-top: 0px;" action="viewProfileServlet" method="get">
                 <input class="centerH" type="submit" value="Delete Account">
             </form>
+            <form style="padding-top: 0px;" action="viewLogs.jsp" method="get">
+                <input class="centerH" type="submit" value="View Logs">
+            </form>
 
             <%
                 //if there are any errors, print a <p> for each of them.

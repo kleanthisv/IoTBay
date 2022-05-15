@@ -26,7 +26,6 @@
             ArrayList<Product> productList = (ArrayList<Product>) session.getAttribute("products");
             User user = (User) session.getAttribute("user");
             String searchError = (String) session.getAttribute("searchError");
-            System.out.println(searchError);
         %>
 
         <div class="navBar">

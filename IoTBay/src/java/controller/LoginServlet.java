@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import model.Log;
 import model.Product;
 import model.User;
 import model.dao.DBManager;
@@ -61,6 +62,14 @@ public class LoginServlet extends HttpServlet {
                 }
                 else{
                     session.setAttribute("user", user);
+                    
+                    Log log = new Log(email);
+                    session.setAttribute("log", log);
+                    try {
+                        manager.createLog(log);
+                    } catch (SQLException ex) {
+                        Logger.getLogger(LoginServlet.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                     request.getRequestDispatcher("welcome.jsp").include(request, response);
                 }
                 
