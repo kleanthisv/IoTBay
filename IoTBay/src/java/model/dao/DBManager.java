@@ -171,6 +171,12 @@ public class DBManager {
                         productStock + ", PRODUCTSTATUS=" + productStatus  + ", PRODUCTCATEGORY='" + productCategory + "' WHERE PRODUCTID ='" + productID + "'");
         
     }
+    
+    public void deleteProduct(String productID) throws SQLException {
+        st.executeUpdate("DELETE FROM ISD.PRODUCTS WHERE PRODUCTID ='" + productID + "'");
+    }
+    
+    
   
     
     

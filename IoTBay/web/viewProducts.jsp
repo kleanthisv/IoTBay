@@ -82,7 +82,7 @@
                 for (Product p : productList) {
             %>
 
-            <tr> 
+             
                 <td><%=p.getID()%></td>
                 <td><%=p.getName()%></td>
                 <td><%=p.getCategory()%></td>
@@ -92,7 +92,7 @@
                 %>
                 <td><a href="CartServlet?ID=<%= p.getID()%>" ><button class="actionBtn">Add to Cart</button></a></td>
                 <td><a href="EditProductServlet?ID=<%= p.getID()%>" ><button class="actionBtn">Edit</button></a></td>
-                <td><a href=""><button class="actionBtn">Delete</button></a></td>
+                <td><a href="DeleteProduct?ID=<%= p.getID()%>"><button class="actionBtn">Delete</button></a></td>
                 <%
                 } else {
                 %>
@@ -101,6 +101,7 @@
                     }
                 %>
             </tr>
+            
 
 
             <%
