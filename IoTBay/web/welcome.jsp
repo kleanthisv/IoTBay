@@ -34,12 +34,14 @@
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
             <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
             <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
             <a href="PaymentServlet"> Payment </a>
+            <a href="cart.jsp"> Cart </a>
             <%}%>
             <%if (user.isStaff()) {%>
             <a href="UserServlet"> Manage Users </a>
