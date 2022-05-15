@@ -43,6 +43,11 @@
             <a href="UserServlet"> Manage Users </a>
             <%}%>
         </div>
+
+        <% if (!user.isAdmin() || user == null) { %>
+        <h1> You do not have permissions to use this function. </h1>
+        <%} else {%>    
+
         <div class="viewProfile" style=" width: 35%">
             <form action="AddUserServlet" method="post">
                 <label for="firstName">First Name:</label><br>
@@ -84,6 +89,7 @@
             %>
             <p class="error"> <%= error%> </p>
             <%
+                        }
                     }
                 }
             %>

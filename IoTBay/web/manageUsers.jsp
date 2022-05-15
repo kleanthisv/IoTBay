@@ -49,11 +49,15 @@
             <%}%>
         </div>
 
+        <% if (!user.isAdmin() || user == null) { %>
+        <h1> You do not have permissions to use this function. </h1>
+        <%} else {%>
+
         <br>
 
         <form align='center' class="searchForm" action='UserServlet' method='post' style="margin:auto;max-width:300px">
             <label for="userSearch" class="searchTextField" >Search:</label>
-            <input type="text" class ="searchForm"id="userSearch" name="userSearch" placeholder="Search Users by name or Phone number"><br>
+            <input type="text" class ="searchForm"id="userSearch" name="userSearch" placeholder="Search users by name or phone number"><br>
             <input type="submit" class="SearchButtonP" value="Search">
         </form>
 
@@ -99,14 +103,17 @@
             </tr>
 
 
-            <%
-                }
-            %>
+            <%}%>
+
+            <div class="centerH" align="center">
+                <a href="AddUserServlet"><button class="SearchButtonP">Add user </button></a>
+                <a href="AdminViewUserLogs" ><button class="SearchButtonP">View Logs</button></a>
+            </div>
+            <br>
+
+            <%}%>
         </table>
 
-        <br>
-        <div class="centerH" align="center">
-            <a href="AddUserServlet"><button class="SearchButtonP">Add user </button></a>
-        </div>
+
     </body>
 </html>

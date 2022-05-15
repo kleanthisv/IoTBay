@@ -76,9 +76,17 @@
         <servlet-name>DeleteProfileServlet</servlet-name>
         <servlet-class>controller.DeleteProfileServlet</servlet-class>
     </servlet>
-      <servlet>
+    <servlet>
         <servlet-name>DeleteProduct</servlet-name>
         <servlet-class>controller.DeleteProduct</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>adminViewUserLogs</servlet-name>
+        <servlet-class>model.adminViewUserLogs</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>AdminViewUserLogs</servlet-name>
+        <servlet-class>controller.AdminViewUserLogs</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>ConnServlet</servlet-name>
@@ -159,8 +167,15 @@
     <servlet-mapping>
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/DeleteProduct</url-pattern>
-    </servlet-mapping>  
-      
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>adminViewUserLogs</servlet-name>
+        <url-pattern>/adminViewUserLogs</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>AdminViewUserLogs</servlet-name>
+        <url-pattern>/AdminViewUserLogs</url-pattern>
+    </servlet-mapping>
     <session-config>
         <session-timeout>
             30
