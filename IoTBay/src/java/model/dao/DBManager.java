@@ -33,9 +33,10 @@ public class DBManager {
             String phoneNum = rs.getString(5);
             String userPassword = rs.getString(6);
             String userType = rs.getString(7);
+            boolean active = rs.getBoolean(8);
             
             if(email.matches(userEmail) && userPassword.matches(password)){
-                return new User(userEmail, fName, lName, DOB, phoneNum, userPassword, userType);
+                return new User(userEmail, fName, lName, DOB, phoneNum, userPassword, userType, active);
             }
         }
         return null;
@@ -47,16 +48,25 @@ public class DBManager {
     }
 
     //update a user details in the database   
-    public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password) throws SQLException {
-        st.executeUpdate("UPDATE ISD.USERS" + "SET USEREMAIL ='"+ newEmail +"', USERFNAME ='" + fName + "', USERLNAME ='" + lName + "', USERDOB='" + 
-                        DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "' WHERE USEREMAIL ='" + email + "'");
+    public void updateUser(String email, String newEmail, String fName, String lName , String DOB, String phoneNum, String password, String type) throws SQLException {
+        st.executeUpdate("UPDATE ISD.USERS" + " SET USEREMAIL='"+ newEmail +"', USERFNAME='" + fName + "', USERLNAME='" + lName + "', USERDOB='" + 
+                        DOB + "', USERPHONENUMBER='" + phoneNum  + "', USERPASSWORD='" + password + "', USERTYPE='" + type + "' WHERE USEREMAIL='" + email + "'");
     }
-
     //delete a user from the database   
     public void deleteUser(String email) throws SQLException {
         st.executeUpdate("DELETE FROM ISD.USERS WHERE USEREMAIL ='" + email + "'");
     }
     
+    //set users active to false
+    public void DeactivateUser(String email) throws SQLException {
+        st.executeUpdate("UPDATE ISD.USERS SET ACTIVE=false WHERE USEREMAIL = '" + email + "'");
+    }
+    
+    //set users active to true
+    public void ActivateUser(String email) throws SQLException {
+        st.executeUpdate("UPDATE ISD.USERS SET ACTIVE=true WHERE USEREMAIL = '" + email + "'");
+    }
+        
     //given an email, check if a user exists in the DB under that email.
     public boolean userExists(String email) throws SQLException {
         String fetch = "SELECT * FROM ISD.USERS WHERE USEREMAIL = '" + email + "'";
@@ -86,7 +96,8 @@ public class DBManager {
             String phoneNum = rs.getString(5);
             String password = rs.getString(6);
             String type = rs.getString(7);
-            temp.add(new User(email,fName,lName,DOB,phoneNum,password,type));
+            boolean active = rs.getBoolean(8);
+            temp.add(new User(email,fName,lName,DOB,phoneNum,password,type,active));
         }
         
         return temp;

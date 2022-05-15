@@ -22,7 +22,7 @@ public class User implements Serializable{
     private String DOB;
     private String phoneNumber;
     private String password;
-    private String userType; //type can be "GUEST" "CUSTOMER" "STAFF"
+    private String userType; //type can be "GUEST" "CUSTOMER" "ADMIN"
     private String streetAddress;
     private String country;
     private String postcode;
@@ -35,7 +35,7 @@ public class User implements Serializable{
     }
     
     //Constructor for Users.
-    public User(String email, String fName, String lName, String DOB , String phoneNumber, String password, String type){
+    public User(String email, String fName, String lName, String DOB , String phoneNumber, String password, String type, boolean active){
         this.email = email;
         this.FName = fName;
         this.LName = lName;
@@ -43,6 +43,7 @@ public class User implements Serializable{
         this.DOB = DOB;
         this.phoneNumber = phoneNumber;
         this.userType = type;
+        this.isActive = active;
     }
   
     public void setFName(String FName){
@@ -67,6 +68,18 @@ public class User implements Serializable{
     
     public void setPassword(String password){
         this.password = password;
+    }
+    
+    public void setActive(boolean active) {
+        this.isActive = active;
+    }
+    
+    public void setDOB(String DOB) {
+        this.DOB = DOB;
+    }
+    
+    public void setPhoneNum(String phoneNum) {
+        this.phoneNumber = phoneNum;
     }
     
     public String getDOB() throws ParseException {
@@ -95,6 +108,10 @@ public class User implements Serializable{
     
     public String getPassword(){
         return this.password;
+    }
+    
+    public boolean isActive() {
+        return this.isActive;
     }
     
     public boolean isStaff(){

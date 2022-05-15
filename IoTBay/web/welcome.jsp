@@ -41,7 +41,9 @@
             <a href="CatalogueServlet"> Catalogue </a>
             <a href="PaymentServlet"> Payment </a>
             <%}%>
-
+            <%if (user.isStaff()) {%>
+            <a href="UserServlet"> Manage Users </a>
+            <%}%>
 
         </div>
 
