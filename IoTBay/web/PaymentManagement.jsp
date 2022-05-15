@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
+    Document   : PaymentManagement
+    Created on : 11/05/2022, 2:51:28 PM
+    Author     : edward
+--%>
 -->
 <html>
     <head>
@@ -16,8 +17,8 @@ and open the template in the editor.
         <div class="navBar">
             
             <a class="title" style>Payment</a>
-            <a href=""> Logout </a>
-            <a href="addPayment.jsp"> Add Payment Details</a>
+            <a href="logout.jsp"> Logout </a>
+            <a href="addpayment.jsp"> Add Payment Details</a>
             <a href="editPayment.jsp"> Edit Payment Details</a>
             <a href="deletePayment.jsp"> Delete Payment Details</a>
 
