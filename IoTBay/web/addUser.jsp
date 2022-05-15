@@ -51,7 +51,7 @@
                 
                 <label for="type">User Type</label>
                 <br>
-                <input type="radio" id="staff" name="type" value="ADMIN">
+                <input type="radio" id="staff" name="type" value="STAFF">
                 <label for="staff">Staff</label>
                 <br>
                 <input type="radio" id="customer" name="type" value="CUSTOMER">

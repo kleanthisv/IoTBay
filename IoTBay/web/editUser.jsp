@@ -54,7 +54,7 @@
 
                 <label for="type">User Type</label>
                 <br>
-                <input type="radio" id="staff" name="type" value="ADMIN" 
+                <input type="radio" id="staff" name="type" value="STAFF" 
                        <%if (u.isStaff()) {%>
                        checked="true"
                        <%}%>>
