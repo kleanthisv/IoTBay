@@ -4,11 +4,20 @@
     Author     : klean
 --%>
 
+<%@page import="java.sql.SQLException"%>
+<%@page import="model.dao.DBManager"%>
+<%@page import="model.Log"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
-        <% session.invalidate();%>
+        <%
+            try {
+                Log log = (Log) session.getAttribute("log");
+                log.setLogout();
+                DBManager manager = (DBManager) session.getAttribute("manager");
+                manager.setLogout(log, log.getLogout());
+                session.invalidate();%>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Logout</title>
 
@@ -30,4 +39,8 @@
             </form>
         </div>
     </body>
+
+    <%} catch (SQLException ex) {
+            System.out.println("SQL exception at logout.");
+        }%>
 </html>

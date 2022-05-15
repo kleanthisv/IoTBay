@@ -179,8 +179,8 @@ public class DBManager {
     
     
   
-    public void setLogout(String logID, String logOut) throws SQLException{
-        st.executeUpdate("UPDATE ISD.LOGS" + " SET LOGOUT='" + logOut + "' WHERE LOGID='" + logID + "'");
+    public void setLogout(Log log, String logOut) throws SQLException{
+        st.executeUpdate("UPDATE ISD.LOGS" + " SET LOGOUT='" + logOut + "' WHERE LOGIN='" + log.getLogin() + "'");
     }
     
     public void setLogin(String logID, String logOut) throws SQLException{

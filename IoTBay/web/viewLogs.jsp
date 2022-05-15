@@ -53,33 +53,31 @@
             if (user != null && !user.isGuest()) {
 
                 DBManager manager = (DBManager) session.getAttribute("manager");
-                try{
-                ArrayList<Log> logs = manager.getUserLogs(user.getEmail());
-                }catch(SQLException e){
-                    System.out.println("Error fetching logs.");
-                }
+                try {
+                    ArrayList<Log> logs = manager.getUserLogs(user.getEmail());
+
         %>
         <br>
 
         <table align="center" class="productTable">
             <thead>
                 <tr>
-                    <th>Log ID</th>
                     <th>Email</th>
                     <th>Login Time</th>
                     <th>Logout Time</th>
                 </tr>
             </thead>
-            <%
-                for (Log l : logs) {
-            %>
+                    <%for (Log l : logs) {
+                    %>
             <td><%=l.getEmail()%></td>
             <td><%=l.getLogin()%></td>
             <td><%=l.getLogout()%></td>
         </tr>
 
 
-        <%
+        <%}
+            } catch (SQLException e) {
+                System.out.println("Error fetching logs.");
             }
         %>
     </table>
