@@ -28,44 +28,39 @@
             String searchError = (String) session.getAttribute("searchError");
             System.out.println(searchError);
         %>
-
+        
         <div class="navBar">
             <a class="title">Catalogue</a>
             <%if (user.isGuest()) {%>
             <a href="login.jsp"> Login </a>
             <a href="welcome.jsp"> Home </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="PaymentServlet"> Payment </a>
-            <a href="cart.jsp"> Cart </a>
             <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="PaymentServlet"> Payment </a>
-            <a href="cart.jsp"> Cart </a>
-            <%}%>
-            <%if (user.isAdmin()) {%>
-            <a href="UserServlet"> Manage Users </a>
             <%}%>
         </div>
-
+        
         <br>
-
+        
         <form align='center' class="searchForm" action='CatalogueServlet' method='post' style="margin:auto;max-width:300px">
             <label for="productSearch" class="searchTextField" >Search:</label>
             <input type="text" class ="searchForm"id="productSearch" name="productSearch" placeholder="Search Products by name"><br>
             <input type="submit" class="SearchButtonP" value="Search">
         </form>
 
-
+        
         <br>
-
+        
         <p class="error" align="center"> <%= (searchError != null ? searchError : "")%></p>
-
+        
         <br>
-
-
+        
+        <div class="centerH">
+        <a href="addProduct.jsp"><button class="SearchButtonP">Add product </button></a>
+        </div>
         <table align="center" class="productTable">
             <thead>
                 <tr>
@@ -78,23 +73,23 @@
                 </tr>
             </thead>
             <%
-
+                
                 for (Product p : productList) {
             %>
 
-             
+            <tr> 
                 <td><%=p.getID()%></td>
                 <td><%=p.getName()%></td>
                 <td><%=p.getCategory()%></td>
                 <td><%=p.getPrice()%></td>
                 <td><%=p.getStock()%></td>
-                <% if (user.isStaff()) {
+                <% if(user.isStaff()) {
                 %>
-                <td><a href="CartServlet?ID=<%= p.getID()%>" ><button class="actionBtn">Add to Cart</button></a></td>
+                <td><a href="" ><button class="actionBtn">Add to Cart</button></a></td>
                 <td><a href="EditProductServlet?ID=<%= p.getID()%>" ><button class="actionBtn">Edit</button></a></td>
-                <td><a href="DeleteProduct?ID=<%= p.getID()%>"><button class="actionBtn">Delete</button></a></td>
+                <td><a href="" ><button class="actionBtn">Delete</button></a></td>
                 <%
-                } else {
+                    }else{
                 %>
                 <td><a href="" ><button class="actionBtn">Add to Cart</button></a></td>
                 <%
@@ -103,13 +98,10 @@
             </tr>
             
 
-
             <%
                 }
             %>
         </table>
-        <div class="centerH" align="center">
-            <a href="addProduct.jsp"><button class="SearchButtonP">Add product </button></a>
-        </div>
+
     </body>
 </html>

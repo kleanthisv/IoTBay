@@ -1,5 +1,5 @@
 <%-- 
-    Document   : addProduct.jsp
+    Document   : editProduct.jsp
     Created on : 10/05/2022, 6:41:50 PM
     Author     : alwin
 --%>
@@ -17,7 +17,7 @@
         <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles.css">
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">        
-        <title>Add Product</title>
+        <title>Edit Product</title>
     </head>
     <body class="editform" >
         <%

@@ -83,7 +83,7 @@ public class User implements Serializable{
         this.phoneNumber = phoneNum;
     }
     
-    public String getDOB(){
+    public String getDOB() throws ParseException {
         return this.DOB;
     }
 
@@ -116,7 +116,7 @@ public class User implements Serializable{
     }
     
     public boolean isStaff(){
-        return userType.equals("STAFF");
+        return userType.equals("ADMIN");
     }
     
     public boolean isGuest(){
@@ -125,10 +125,6 @@ public class User implements Serializable{
     
     public boolean isCustomer(){
         return userType.equals("CUSTOMER");
-    }
-    
-    public boolean isAdmin() {
-        return userType.equals("ADMIN");
     }
 }
 

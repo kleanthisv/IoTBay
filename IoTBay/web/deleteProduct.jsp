@@ -1,13 +1,17 @@
+<%-- 
+    Document   : deleteProduct
+    Created on : 11/05/2022, 2:51:28 PM
+    Author     : alwin
+--%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Delete Product</title>
+        <title>JSP Page</title>
     </head>
     <body>
-        <h1>H</h1>
+        <h1>Hello World!</h1>
     </body>
 </html>
-
-

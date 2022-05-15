@@ -22,7 +22,6 @@
     <body action="UserServlet">
 
         <%
-            User user = (User) session.getAttribute("user");
             ArrayList<User> userList = (ArrayList<User>) session.getAttribute("users");
             String userSearchError = (String) session.getAttribute("userSearchError");
             System.out.println(userSearchError);
@@ -30,23 +29,11 @@
 
         <div class="navBar">
             <a class="title">Manage Users</a>
-            <%if (user.isGuest()) {%>
-            <a href="login.jsp"> Login </a>
-            <a href="welcome.jsp"> Home </a>
-            <a href="CatalogueServlet"> Catalogue </a>
-            <a href="PaymentServlet"> Payment </a>
-            <a href="cart.jsp"> Cart </a>
-            <%} else {%>
             <a href="logout.jsp"> Log Out</a>
             <a href="welcome.jsp"> Home </a>
             <a href="viewProfile.jsp"> Profile </a>
             <a href="CatalogueServlet"> Catalogue </a>
-            <a href="PaymentServlet"> Payment </a>
-            <a href="cart.jsp"> Cart </a>
-            <%}%>
-            <%if (user.isAdmin()) {%>
-            <a href="UserServlet"> Manage Users </a>
-            <%}%>
+            <a href="manageUsers.jsp"> Manage Users </a>
         </div>
 
         <br>
@@ -64,7 +51,9 @@
 
         <br>
 
-
+        <div class="centerH">
+            <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
+        </div>
         <table align="center" class="productTable">
             <thead>
                 <tr>
@@ -104,9 +93,5 @@
             %>
         </table>
 
-        <br>
-        <div class="centerH" align="center">
-            <a href="AddUserServlet"><button class="SearchButtonP">Add user </button></a>
-        </div>
     </body>
 </html>

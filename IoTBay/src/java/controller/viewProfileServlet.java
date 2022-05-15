@@ -1,4 +1,5 @@
 //Author: Kleanthis
+
 package controller;
 
 import java.io.IOException;
@@ -18,22 +19,13 @@ public class viewProfileServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         validator.clear(session);
-        
-        boolean deleteUser = Boolean.parseBoolean(request.getParameter("delete"));
-        
-        if(deleteUser){
-            System.out.println("delete is true");
-        }
-        else{
-            System.out.println("delete is false");
-        }
-        request.getRequestDispatcher("viewProfile.jsp").include(request, response);
+        request.getRequestDispatcher("deleteProfile.jsp").include(request, response);
     }
-
+    
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -41,120 +33,65 @@ public class viewProfileServlet extends HttpServlet {
         Validator validator = new Validator();
         DBManager manager = (DBManager) session.getAttribute("manager");
         validator.clear(session);
-        User user = (User) session.getAttribute("user");
-
+        User user = null;
+        
         ArrayList<String> errors = new ArrayList();
-        ArrayList<String> changed = new ArrayList();
-
-        boolean changePassword = false;
+        
         String fName = request.getParameter("firstName");
         String lName = request.getParameter("lastName");
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String date = request.getParameter("birthday");
         String phoneNum = request.getParameter("phoneNum");
-        String newPassword = request.getParameter("newPassword");
-        String newPasswordConfirm = request.getParameter("newPasswordConfirm");
-
-        if (!phoneNum.equals(user.getPhoneNum())) {
-            if (!validator.validatePhone(phoneNum)) {
-                errors.add("Error: Phone numbers must only contain numbers and be 10 digits long. Eg. 0412345678");
-            } else {
-                changed.add("Phone number updated.");
-            }
+        
+        if( validator.checkEmpty(email) || validator.checkEmpty(password) || validator.checkEmpty(lName) || validator.checkEmpty(fName)){
+            errors.add("Error: All fields required.");
         }
-        if (!date.equals(user.getDOB())) {
-            if (!validator.validateDate(date)) {
-                errors.add("Error: Invalid date entered.");
-            } else {
-                changed.add("DOB updated.");
-            }
+        if(!validator.validatePhone(phoneNum)){
+            errors.add("Error: Phone numbers must only contain numbers and be 10 digits long. Eg. 0412345678");
         }
-
-        if (!email.matches(user.getEmail())) {
-            if (!validator.validateEmail(email)) {
-                errors.add("Error: Incorrect email format. eg. john@email.com");
-            } else {
-                try {
-                    if (manager.userExists(email)) {
-                        errors.add("Error: That email address is taken.");
-                    } else {
-                        changed.add("Email updated.");
-                    }
-                } catch (SQLException ex) {
-                    Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
+        if(!validator.validateDate(date)){
+            errors.add("Error: Invalid date entered.");
         }
-
-        if (!password.isEmpty()) {
-            if (password.equals(user.getPassword())) {
-                System.out.println(newPassword);
-                System.out.println(newPasswordConfirm);
-                if (newPassword.equals(newPasswordConfirm)) {
-                    if (!validator.validatePassword(newPassword)) {
-                        errors.add("Error: Passwords must be atleast 4 character long, and not contain special characters.");
-                    } else {
-                        changed.add("Password updated.");
-                        changePassword = true;
-                    }
-                }
-            } else {
-                errors.add("Error: Current password is incorrect.");
-            }
+        if(!validator.validateEmail(email)){
+            errors.add("Error: Incorrect email format. eg. john@email.com");
         }
-
-        if (!fName.equals(user.getFName())) {
-            if (!validator.validateName(fName)) {
-                errors.add("Error: Names must be proper nouns and cannot contain numbers or special characters.");
-            } else {
-                changed.add("First name updated.");
-            }
+        if(!validator.validatePassword(password)){
+            errors.add("Error: Passwords must be atleast 4 character long, and not contain special characters.");
         }
-        if (!lName.equals(user.getLName())) {
-            if (!validator.validateName(lName)) {
-                errors.add("Error: Names must be proper nouns and cannot contain numbers or special characters.");
-            } else {
-                changed.add("Last name updated.");
-            }
+        if(!validator.validateName(fName) || !validator.validateName(lName)){
+            errors.add("Error: Names must be proper nouns and cannot contain numbers or special characters.");
         }
-
+        //Check if user exists in DB.
+        try {
+            if (manager.userExists(email)) {
+                errors.add("Error: A user already exists under that email address.");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         //if errors are present, do not submit.
-        if (!errors.isEmpty()) {
+        if(!errors.isEmpty()){
             session.setAttribute("errors", errors);
-            request.getRequestDispatcher("viewProfile.jsp").include(request, response);
-        } else {
+            request.getRequestDispatcher("viewProfile.jsp").include(request, response);            
+        }
+        else {
             try {
                 //edit user details
 
-                if (changePassword) {
-                    manager.updateUser(user.getEmail(), email, fName, lName, date, phoneNum, newPassword, user.getType());
-                    user.setEmail(email);
-                    user.setFName(fName);
-                    user.setLName(lName);
-                    user.setDOB(date);
-                    user.setPhoneNumber(phoneNum);
-                    user.setPassword(newPassword);
-                    session.setAttribute("changed", changed);
-                    request.getRequestDispatcher("viewProfile.jsp").include(request, response);
-                } else {
-                    manager.updateUser(user.getEmail(), email, fName, lName, date, phoneNum, user.getPassword(), user.getType());
-                    user.setEmail(email);
-                    user.setFName(fName);
-                    user.setLName(lName);
-                    user.setDOB(date);
-                    user.setPhoneNumber(phoneNum);
-                    session.setAttribute("changed", changed);
-                    request.getRequestDispatcher("viewProfile.jsp").include(request, response);
-
-                }
+                user = manager.findUser(email, password);
             } catch (SQLException ex) {
                 Logger.getLogger(RegisterServlet.class.getName()).log(Level.SEVERE, null, ex);
-                session.setAttribute("errors", errors);
-                request.getRequestDispatcher("viewProfile.jsp").include(request, response);
             }
+        }
+        
 
+        if (user != null) {
+            session.setAttribute("user", user);
+            request.getRequestDispatcher("welcome.jsp").include(request, response);
         }
 
+        
     }
 }

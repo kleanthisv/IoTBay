@@ -65,9 +65,6 @@ public class Validator implements Serializable {
     public void clear(HttpSession session){
         session.setAttribute("errors", null);
         session.setAttribute("isEdited",null);
-        session.setAttribute("changed",null);
-        session.setAttribute("editUserErrors", null);
-        session.setAttribute("searchError", null);
     }
 
 

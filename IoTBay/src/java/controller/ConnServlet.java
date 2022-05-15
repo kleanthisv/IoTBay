@@ -23,6 +23,7 @@
        @Override //Create and instance of DBConnector for the deployment session
 
        public void init() {
+           System.out.println("Connservlet setup starting.");
            try {
                db = new DBConnector();
 
@@ -56,9 +57,7 @@
            //export the DB manager to the view-session (JSPs)
 
            session.setAttribute("manager", manager);
-           
-           Validator validator = new Validator();
-           validator.clear(session);
+           System.out.println("DBManager set up.");
        }   
 
         

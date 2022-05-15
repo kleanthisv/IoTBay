@@ -4,8 +4,6 @@
     Author     : Kleanthis
 --%>
 
-<%@page import="model.Product"%>
-<%@page import="java.util.ArrayList"%>
 <%@page import="model.User"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -24,8 +22,6 @@
         
         <%
         User user = (User) session.getAttribute("user");
-        ArrayList<Product> cart = new ArrayList<Product>();
-        session.setAttribute("cart",cart);
         if(user == null){
             user = new User();
         }
@@ -47,9 +43,10 @@
             <a href="PaymentManagement.jsp"> Payment </a>
             <a href="cart.jsp"> Cart </a>
             <%}%>
-            <%if (user.isAdmin()) {%>
+            <%if (user.isStaff()) {%>
             <a href="UserServlet"> Manage Users </a>
             <%}%>
+
         </div>
 
         <p> Welcome <%= (user.getFName() != null ? user.getFName() : "")%> </p>
