@@ -32,11 +32,7 @@ public class EditUserServlet extends HttpServlet {
                     userSelection = u;
                 }
             }
-            session.setAttribute("userSelected", userSelection);
-
-            //reset errors when editing another user
-            ArrayList<String> errors = new ArrayList();
-            session.setAttribute("editUserErrors", errors);            
+            session.setAttribute("userSelected", userSelection);        
 
             request.getRequestDispatcher("editUser.jsp").include(request, response);
         } catch (SQLException ex) {

@@ -79,11 +79,8 @@ public class AddUserServlet extends HttpServlet {
             session.setAttribute("errors", errors);
             request.getRequestDispatcher("addUser.jsp").include(request, response);
         } else {
-            System.out.println("try to create user");
             try {
-
                 manager.addUser(email, fName, lName, date, phoneNum, password, type);
-                System.out.println("creating user");
                 user = manager.findUser(email, password);
             } catch (SQLException ex) {
                 Logger.getLogger(AddUserServlet.class.getName()).log(Level.SEVERE, null, ex);
