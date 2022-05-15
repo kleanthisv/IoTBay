@@ -15,16 +15,18 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
-    
+       </head>
     <body>
         <div class="navBar">
-            <a class="title" style>Login</a>
+              <a class="title" style>Payment Delete</a>
             <a href="register.jsp"> Register </a>
             <a href="index.jsp"> Home </a>
             <a href="PaymentManagement.jsp"> Payment </a>
+        </div>
+
+        <div class="index-container">
             
-        <form action="Payment_CreateServlet" method="post">
+        <form action="PaymentManagement.jsp" method="post">
        
         <h1> Order No. </h1>
         <h2> Total Amount $AUD </h2>
@@ -46,11 +48,11 @@
              <input type="number" id="input-field" name="cvv" placeholder="CVV" required/> 
              <input type="text" id="input-field" name="nameOnCard" placeholder="Name on Card" required/> 
              
-             <input type="submit" value="Pay">
+             
+             <th><a href="Paymentsuc.jsp"> Pay </a></th>
         </form>
        
-             <p><a class= "button" style="center" href="welcome.jsp">Cancel</a></p>
-                
+             <p><a class= "button" style="" href="welcome.jsp">Cancel</a></p>  
         </div>
        
     </body>

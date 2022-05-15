@@ -19,7 +19,7 @@
             <a class="title">Viewing Cart</a>
             <a href="logout.jsp"> Logout </a>
             <a href="welcome.jsp"> Home </a>
-            <a href="PaymentServlet"> Payment Options </a>
+            <a href="PaymentManagement.jsp"> Payment </a>
             
         </div>
 

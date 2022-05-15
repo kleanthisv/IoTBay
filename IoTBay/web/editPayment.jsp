@@ -4,51 +4,55 @@
     Author     : edward
 --%>
 
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
     <head>
-       <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Edit Payment Details</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>edit Payment</title>
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Tauri&display=swap" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="styles.css">
-    </head>
+       </head>
     <body>
-         <div class="navBar">
-            <a class="title">Add Product</a>
-            <a href="logout.jsp"> Log Out</a>
-            <a href="welcome.jsp"> Home </a>
-            <a href="viewProfile.jsp"> Profile </a>
-            <a href="CatalogueServlet"> Catalogue </a>
-            <%}%>
+        <div class="navBar">
+              <a class="title" style>edit payment</a>
+            <a href="register.jsp"> Register </a>
+            <a href="index.jsp"> Home </a>
+            <a href="PaymentManagement.jsp"> Payment </a>
         </div>
-        
-         <form action = "Payment_UpdateServlet" method="post">
-        
-        <h1> Order No. ${orderId} </h1>
-        <h2> Total Amount A$${order.getAmount()} </h2>
+
+        <div class="index-container">
+            
+        <form action="PaymentManagement.jsp" method="post">
+       
+        <h1> Order No. </h1>
+        <h2> Total Amount $AUD </h2>
         
         <div class="body-text"> 
             <h3><label for name="paymentMethod">Payment Method</label></h3>
-                <select id="paymentMethod" name="paymentMethod"  value="${payment.getPaymentMethod()}" required>
+                <select id="paymentMethod" name="paymentMethod">
                 <option value="Credit Card">Credit Card</option></select></div>
  
             <b><label for name="datePaid">Date Paid</label></b>
-                <input type="date" id="coloumn-left" name="datePaid" value="${payment.getDatePaid()}" placeholder="Date Paid" required/> 
+                <input type="date" id="coloumn-left" name="datePaid" placeholder="Date Paid" required/> 
              
                 <div class="form-container">
                 <div class="personal-information">
                 <h1>Payment Information</h1></div> 
-                    
-                     <input type="number" id="input-field" name="cardNumber" placeholder="Card Number" value="${payment.getCardNumber()}" required/> 
-                     <input type="text" id="input-field" name="expiryDate" placeholder="MM/YY" value="${payment.getExpiryDate()}" required/> 
-                     <input type="number" id="input-field" name="cvv" placeholder="CVV" value="${payment.getCvv()}" required/> 
-                     <input type="text" id="input-field" name="nameOnCard" placeholder="Name on Card" value="${payment.getNameOnCard()}" required/> 
-
-                     <input type="submit" value="Update">
-            </form>
-                    
-                     <p><a class= "button" style="center" href="Payment_Confirm.jsp">Cancel</a></p>
             
+             <input type="number" id="input-field" name="cardNumber" placeholder="Card Number" required/> 
+             <input type="text" id="input-field" name="expiryDate" placeholder="MM/YY" required/> 
+             <input type="number" id="input-field" name="cvv" placeholder="CVV" required/> 
+             <input type="text" id="input-field" name="nameOnCard" placeholder="Name on Card" required/> 
+             
+             <input type="submit" value="Pay">
+        </form>
+       
+             <p><a class= "button" style="" href="welcome.jsp">Cancel</a></p>  
+        </div>
+       
     </body>
 </html>
