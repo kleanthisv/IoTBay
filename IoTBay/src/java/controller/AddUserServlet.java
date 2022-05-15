@@ -21,11 +21,7 @@ public class AddUserServlet extends HttpServlet {
         HttpSession session = request.getSession();
         Validator validator = new Validator();
         validator.clear(session);
-        //reset errors when adding another user
-        ArrayList<String> errors = new ArrayList();
-        session.setAttribute("errors", errors);
         request.getRequestDispatcher("addUser.jsp").include(request, response);
-
     }
 
     @Override

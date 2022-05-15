@@ -93,7 +93,7 @@
 
         <br>
         <div class="centerH" align="center">
-            <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
+            <a href="AddUserServlet"><button class="SearchButtonP">Add user </button></a>
         </div>
     </body>
 </html>
