@@ -10,6 +10,7 @@
     <head> 
         <title> View Cart </title>
     </head>
+    <link rel="stylesheet" type="text/css" href="styles.css">
     <body>
         <h1> Cart </h1>
         <table width="600" border="1" cellspacing="0" cellpadding="3" border="0"/>
