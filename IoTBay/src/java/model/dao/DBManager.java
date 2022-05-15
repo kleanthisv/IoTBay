@@ -44,7 +44,7 @@ public class DBManager {
 
     //Add a user-data into the database   
     public void addUser(String email, String fName, String lName , String DOB, String phoneNum, String password, String type) throws SQLException {
-        st.executeUpdate("INSERT INTO ISD.USERS" + " VALUES ('" + email + "', '" + fName + "', '" + lName + "', '" + DOB + "', '" + phoneNum  + "', '" + password + "', '" + type + "')");
+        st.executeUpdate("INSERT INTO ISD.USERS" + " VALUES ('" + email + "', '" + fName + "', '" + lName + "', '" + DOB + "', '" + phoneNum  + "', '" + password + "', '" + type + "', 'true')");
     }
 
     //update a user details in the database   
