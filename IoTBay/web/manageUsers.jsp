@@ -51,9 +51,7 @@
 
         <br>
 
-        <div class="centerH">
-            <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
-        </div>
+
         <table align="center" class="productTable">
             <thead>
                 <tr>
@@ -93,5 +91,9 @@
             %>
         </table>
 
+        <br>
+        <div class="centerH" align="center">
+            <a href="addUser.jsp"><button class="SearchButtonP">Add user </button></a>
+        </div>
     </body>
 </html>
