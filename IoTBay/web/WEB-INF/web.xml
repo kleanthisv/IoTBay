@@ -159,8 +159,8 @@
     <servlet-mapping>
         <servlet-name>DeleteProduct</servlet-name>
         <url-pattern>/DeleteProduct</url-pattern>
-    </servlet-mapping>
-    
+    </servlet-mapping>  
+      
     <session-config>
         <session-timeout>
             30
