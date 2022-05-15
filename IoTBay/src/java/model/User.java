@@ -8,6 +8,7 @@ package model;
 import java.io.Serializable;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
 
@@ -22,7 +23,7 @@ public class User implements Serializable{
     private String DOB;
     private String phoneNumber;
     private String password;
-    private String userType; //type can be "GUEST" "CUSTOMER" "ADMIN"
+    private String userType; //type can be "GUEST" "CUSTOMER" "STAFF" "ADMIN"
     private String streetAddress;
     private String country;
     private String postcode;
@@ -45,7 +46,7 @@ public class User implements Serializable{
         this.userType = type;
         this.isActive = active;
     }
-  
+    
     public void setFName(String FName){
         this.FName = FName;
     }
