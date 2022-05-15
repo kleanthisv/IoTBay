@@ -48,7 +48,7 @@
              <input type="number" id="input-field" name="cvv" placeholder="CVV" required/> 
              <input type="text" id="input-field" name="nameOnCard" placeholder="Name on Card" required/> 
              
-             <input type="submit" value="Edit">
+             <input type="submit" value="Pay">
         </form>
        
              <p><a class= "button" style="" href="welcome.jsp">Cancel</a></p>  
