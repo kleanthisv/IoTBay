@@ -23,15 +23,7 @@ public class viewProfileServlet extends HttpServlet {
         Validator validator = new Validator();
         validator.clear(session);
         
-        boolean deleteUser = Boolean.parseBoolean(request.getParameter("delete"));
-        
-        if(deleteUser){
-            System.out.println("delete is true");
-        }
-        else{
-            System.out.println("delete is false");
-        }
-        request.getRequestDispatcher("viewProfile.jsp").include(request, response);
+        request.getRequestDispatcher("deleteProfile.jsp").include(request, response);
     }
 
     @Override
